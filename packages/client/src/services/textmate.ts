@@ -1,4 +1,4 @@
-import { TextMateScopesParser } from '@anche/textmate-utilities';
+import { TextMateScopesParser } from '@kerberjg-vscode-editor/textmate-utilities';
 
 export const Languages = {
     'source.ts': 'TypeScript',

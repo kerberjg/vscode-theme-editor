@@ -1,6 +1,6 @@
 import React from 'react';
-import { initialize as initSemantic, Presets } from '@anche/semantic-tokens-utilities';
-import { initialize as initTextMate } from '@anche/textmate-utilities';
+import { initialize as initSemantic, Presets } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
+import { initialize as initTextMate } from '@kerberjg-vscode-editor/textmate-utilities';
 import { RecoilRoot } from 'recoil';
 
 import { rawCode } from '~/state/code';

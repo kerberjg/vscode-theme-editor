@@ -30,13 +30,13 @@ interface TextMateParserResult {
 
 First copy the following files into your applications static folder (which should be accessable via `window.fetch`):
 
--   all the wanted grammar files from `./node_modules/@anche/textmate-utilities/grammar` (or add your own, can be json or plist)
+-   all the wanted grammar files from `./node_modules/@kerberjg-vscode-editor/textmate-utilities/grammar` (or add your own, can be json or plist)
 -   `onigasm.wasm` (https://github.com/NeekSandhu/onigasm), also in `./node_modules/lib/onigasm.wasm`
 
 Before you can use the helper, you should bootstrap your app with the initialize module
 
 ```typescript
-import { initialize } from '@anche/textmate-utilities';
+import { initialize } from '@kerberjg-vscode-editor/textmate-utilities';
 
 const ONIGASM_URL = '/public/static/onigasm.wasm';
 
@@ -49,7 +49,7 @@ const ONIGASM_URL = '/public/static/onigasm.wasm';
 ### TextMateScopesParser setup
 
 ```typescript
-import { TextMateScopesParser } from '@anche/textmate-utilities';
+import { TextMateScopesParser } from '@kerberjg-vscode-editor/textmate-utilities';
 
 const service = new TextMateScopesParser({
     filePaths: {
@@ -84,7 +84,7 @@ const code = service.parse(rawCode, 'source.tsx' /* key of filePaths: languageSc
 This utility helps by getting the applicable rule for a given scope
 
 ```typescript
-import { match } from '@anche/textmate-utilities';
+import { match } from '@kerberjg-vscode-editor/textmate-utilities';
 
 interface TextMateRule {
     scopes: string[];

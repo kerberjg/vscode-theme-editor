@@ -1,4 +1,4 @@
-import { SemanticTokensParserResult } from '@anche/semantic-tokens-utilities';
+import { SemanticTokensParserResult } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 import { BACKEND_URL } from '~/constants';
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { parser } from '@anche/semantic-tokens-utilities';
+import { parser } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 const app = express();
 

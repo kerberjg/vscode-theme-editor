@@ -1,30 +1,27 @@
 {
-    "name": "@anche/shared",
+    "name": "@kerberjg-vscode-editor/shared",
     "description": "Shared",
-    "author": "Angelo Abdoelsamath <angelo.a@me.com>",
-    "homepage": "https://github.com/el-angel/theme-editor#readme",
+    "author": "Jamie Kerber <kerber.jg@gmail.com>",
+    "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "license": "MIT",
     "main": "src/index.ts",
     "types": "src/index.ts",
-    "private": "true",
+    "private": true,
     "directories": {
         "src": "src"
     },
     "files": [
         "src"
     ],
-    "publishConfig": {
-        "registry": "https://registry.yarnpkg.com"
-    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/el-angel/theme-editor.git"
+        "url": "git+https://github.com/kerberjg/vscode-theme-editor.git"
     },
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1"
     },
     "bugs": {
-        "url": "https://github.com/el-angel/theme-editor/issues"
+        "url": "https://github.com/kerberjg/vscode-theme-editor/issues"
     },
     "lint-staged": {
         "src/**/*.ts": [

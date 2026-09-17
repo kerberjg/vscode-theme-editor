@@ -1,4 +1,4 @@
-import { CodeDocument, Parser } from '@anche/shared';
+import { CodeDocument, Parser } from '@kerberjg-vscode-editor/shared';
 import ts from 'typescript/lib/tsserverlibrary';
 import { TokenEncodingConsts } from 'typescript-vscode-sh-plugin/lib/constants';
 import initPlugin from 'typescript-vscode-sh-plugin';

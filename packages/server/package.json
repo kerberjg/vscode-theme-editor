@@ -1,13 +1,14 @@
 {
-    "name": "@anche/theme-server",
+    "name": "@kerberjg-vscode-editor/server",
+    "author": "Jamie Kerber <kerber.jg@gmail.com>",
     "repository": {
         "type": "git",
-        "url": "https://github.com/el-angel/theme-editor.git"
+        "url": "https://github.com/kerberjg/vscode-theme-editor.git"
     },
-    "private": "true",
-    "homepage": "https://el-angel.github.io/theme-editor",
+    "private": true,
+    "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "dependencies": {
-        "@anche/semantic-tokens-utilities": "^1.0.0",
+        "@kerberjg-vscode-editor/semantic-tokens-utilities": "^1.0.0",
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
         "path": "^0.12.7",

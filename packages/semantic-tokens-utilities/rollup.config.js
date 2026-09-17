@@ -6,7 +6,7 @@ import ttypescript from 'ttypescript';
 
 const pkg = require('./package.json');
 
-const bundlePackages = ['@anche/shared'];
+const bundlePackages = ['@kerberjg-vscode-editor/shared'];
 
 const external = Object.keys(pkg.dependencies || {}).filter(dep => !bundlePackages.includes(dep));
 

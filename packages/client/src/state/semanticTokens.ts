@@ -1,4 +1,4 @@
-import { SemanticToken as ExternalSemanticToken } from '@anche/semantic-tokens-utilities';
+import { SemanticToken as ExternalSemanticToken } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import { groupBy } from 'lodash';
 import { atom, selector, useRecoilCallback, useRecoilValue } from 'recoil';
 

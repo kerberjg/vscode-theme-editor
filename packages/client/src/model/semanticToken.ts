@@ -1,4 +1,4 @@
-import { createToken } from '@anche/semantic-tokens-utilities';
+import { createToken } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import { uniqueId } from 'lodash';
 
 import { EntityType } from '~/constants';

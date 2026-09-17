@@ -1,6 +1,6 @@
 import React from 'react';
-import { createToken, matcher } from '@anche/semantic-tokens-utilities';
-import { match } from '@anche/textmate-utilities';
+import { createToken, matcher } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
+import { match } from '@kerberjg-vscode-editor/textmate-utilities';
 import cx from 'classnames';
 import {
     atom,

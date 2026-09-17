@@ -1,4 +1,4 @@
-import { Position } from '@anche/shared';
+import { Position } from '@kerberjg-vscode-editor/shared';
 
 export interface TokenFallback {
     token: Token;

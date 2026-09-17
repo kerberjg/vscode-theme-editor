@@ -2,7 +2,7 @@ import React from 'react';
 import {
     createTokenString,
     SemanticToken as ExternalSemanticToken,
-} from '@anche/semantic-tokens-utilities';
+} from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import cx from 'classnames';
 import { selectorFamily, useRecoilValue } from 'recoil';
 

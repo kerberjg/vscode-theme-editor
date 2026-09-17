@@ -25,7 +25,7 @@ First you should/could initialize the match helper with the scope fallbacks befo
 (You could call the initialize module before starting your app)
 
 ```typescript
-import { initialize } from '@anche/semantic-tokens-utilities';
+import { initialize } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 export type FallbackRegister = (tokenString: string, fallbackScopes: string[]) => void;
 
@@ -41,7 +41,7 @@ export type FallbackRegister = (tokenString: string, fallbackScopes: string[]) =
 
 ```typescript
 // If you want to have the same fallbacks as VSCode
-import { initialize, Presets } from '@anche/semantic-tokens-utilities';
+import { initialize, Presets } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 initialize(Presets.vscode);
 ```
@@ -64,7 +64,7 @@ type SemanticTokensParserResult = <T extends Position>{
     tokens: T[];
 }
 
-import { parser } from '@anche/semantic-tokens-utilities';
+import { parser } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 const rawCode = `const semanticTokens = () => {}`;
 
@@ -141,7 +141,7 @@ const firstNode = parserResult.tokens[0];
 //     language: undefined
 // }
 
-import { Matcher } from '@anche/semantic-tokens-utilities';
+import { matcher } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 // semanticTokens[2] will return
 const rule = Matcher.matchToken(firstNode, semanticTokens);

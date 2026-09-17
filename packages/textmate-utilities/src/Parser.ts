@@ -1,4 +1,4 @@
-import { CodeDocument, Supplier } from '@anche/shared';
+import { CodeDocument, Supplier } from '@kerberjg-vscode-editor/shared';
 import { IGrammar, Registry } from 'monaco-textmate';
 import { TextMateNode } from '~/types';
 

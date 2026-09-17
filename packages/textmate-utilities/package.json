@@ -1,7 +1,8 @@
 {
-    "name": "@anche/textmate-utilities",
+    "name": "@kerberjg-vscode-editor/textmate-utilities",
     "version": "0.0.2",
     "description": "TextMate Grammar Parser",
+    "private": true,
     "main": "lib/index.js",
     "module": "lib/index.es.js",
     "types": "lib/textmate-utilities/src/index.d.ts",
@@ -11,8 +12,8 @@
         "grammar",
         "parser"
     ],
-    "author": "Angelo Abdoelsamath <angelo.a@me.com>",
-    "homepage": "https://github.com/el-angel/theme-editor#readme",
+    "author": "Jamie Kerber <kerber.jg@gmail.com>",
+    "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "license": "MIT",
     "directories": {
         "lib": "lib",
@@ -21,13 +22,9 @@
     "files": [
         "lib"
     ],
-    "publishConfig": {
-        "access": "public",
-        "registry": "https://registry.npmjs.org/"
-    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/el-angel/theme-editor.git"
+        "url": "git+https://github.com/kerberjg/vscode-theme-editor.git"
     },
     "scripts": {
         "test": "jest",
@@ -48,7 +45,7 @@
         ]
     },
     "bugs": {
-        "url": "https://github.com/el-angel/theme-editor/issues"
+        "url": "https://github.com/kerberjg/vscode-theme-editor/issues"
     },
     "dependencies": {
         "monaco-textmate": "^3.0.1",

@@ -1,9 +1,9 @@
 {
-    "name": "tmtheme-anche",
-    "version": "1.0.0",
+    "name": "vscode-theme-editor",
+    "version": "2.0.0",
     "main": "index.js",
-    "repository": "git@github.com:el-angel/theme-editor.git",
-    "author": "Angelo Abdoelsamath <angelo.a@me.com>",
+    "repository": "https://github.com/kerberjg/vscode-theme-editor.git",
+    "author": "Jamie Kerber <kerber.jg@gmail.com>",
     "license": "MIT",
     "workspaces": {
         "packages": [
@@ -13,15 +13,14 @@
     "private": true,
     "scripts": {
         "start": "concurrently \"yarn p:textmate run build\" \"yarn p:semantic run build\" && yarn start:editor",
-        "start:editor": "yarn workspace @anche/theme-editor run start",
+        "start:editor": "yarn workspace @kerberjg-vscode-editor/client run start",
         "watch": "concurrently \"yarn p:textmate run watch\" \"yarn p:semantic run watch\"",
         "format": "prettier --write \"packages/*/src/**/*.{ts,tsx,scss,js,json}\"",
         "deploy": "concurrently \"yarn p:textmate run build\" \"yarn p:semantic run build\" && yarn p:client deploy",
-        "p:server": "yarn workspace @anche/tmtheme-server",
-        "p:client": "yarn workspace @anche/theme-editor",
-        "p:textmate": "yarn workspace @anche/textmate-utilities",
-        "p:semantic": "yarn workspace @anche/semantic-tokens-utilities",
-        "publish": "lerna publish --no-private"
+        "p:server": "yarn workspace @kerberjg-vscode-editor/server",
+        "p:client": "yarn workspace @kerberjg-vscode-editor/client",
+        "p:textmate": "yarn workspace @kerberjg-vscode-editor/textmate-utilities",
+        "p:semantic": "yarn workspace @kerberjg-vscode-editor/semantic-tokens-utilities"
     },
     "husky": {
         "hooks": {

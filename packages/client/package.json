@@ -1,17 +1,15 @@
 {
-    "name": "@anche/theme-editor",
+    "name": "@kerberjg-vscode-editor/client",
     "version": "0.0.2",
+    "author": "Jamie Kerber <kerber.jg@gmail.com>",
+    "private": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/el-angel/theme-editor.git"
+        "url": "https://github.com/kerberjg/vscode-theme-editor.git"
     },
-    "publishConfig": {
-        "access": "public",
-        "registry": "https://registry.npmjs.org/"
-    },
-    "homepage": "https://el-angel.github.io/theme-editor",
+    "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "dependencies": {
-        "@anche/textmate-utilities": "^1.0.0",
+        "@kerberjg-vscode-editor/textmate-utilities": "^1.0.0",
         "@material-ui/core": "^4.11.0",
         "@material-ui/icons": "^4.9.1",
         "body-parser": "^1.19.0",

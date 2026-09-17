@@ -21,7 +21,7 @@
         "types": ["node", "jest"],
         "paths": {
             "~/*": ["./src/*"],
-            "@anche/*": ["../../packages/*/src"]
+            "@kerberjg-vscode-editor/*": ["../../packages/*/src"]
         },
         "isolatedModules": false,
         "plugins": [
