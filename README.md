@@ -29,17 +29,17 @@ Available now! ✨ https://kerberjg.github.io/vscode-theme-editor
 
 ### Run locally
 
-Make sure to have Node.js and Yarn installed on your system before running the following commands:
+Make sure to have Node.js (14+, with native npm workspaces support) installed on your system before running the following commands:
 
-```
+```sh
 $ git clone https://github.com/kerberjg/vscode-theme-editor.git
 $ cd ./vscode-theme-editor
-$ yarn install
-$ yarn start
+$ npm install
+# starts textmate-utilities + semantic-tokens-utilities builds in parallel, then launches client
+$ npm start
 
-// enable semantic highlighting
-$ cd ./packages/server
-$ yarn start
+// enable semantic highlighting server (separate terminal)
+$ npx ts-node-dev --respawn packages/server/src/index.ts   # or: npm run watch --workspace=@kerberjg-vscode-editor/server
 ```
 
 ## 🛠 Development Guide
