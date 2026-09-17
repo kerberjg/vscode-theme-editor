@@ -98,6 +98,8 @@ const createTypeScriptService = ({ language, code }: Input): ts.LanguageServiceH
             }
             return resolvedModules;
         },
+        readFile: ts.sys.readFile,
+        fileExists: ts.sys.fileExists,
     };
 
     return host;

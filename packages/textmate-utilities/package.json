@@ -54,13 +54,13 @@
     "devDependencies": {
         "@rollup/plugin-commonjs": "^14.0.0",
         "@rollup/plugin-node-resolve": "^8.4.0",
+        "@rollup/plugin-typescript": "^12.3.0",
         "@types/jest": "^26.0.8",
         "@zerollup/ts-transform-paths": "^1.7.18",
         "jest": "^26.2.2",
         "rimraf": "^3.0.2",
         "rollup": "^2.22.1",
-        "rollup-plugin-typescript2": "^0.27.1",
         "ts-jest": "^26.1.4",
-        "ttypescript": "^1.5.10"
+        "typescript": "^5.9.x"
     }
 }

@@ -1,8 +1,6 @@
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-
-import ttypescript from 'ttypescript';
 
 const pkg = require('./package.json');
 
@@ -25,15 +23,8 @@ export default {
     ],
     external,
     plugins: [
-        resolve({
-            preferBuiltins: true,
-            browser: false,
-        }),
+        resolve({ preferBuiltins: true, browser: false }),
         commonjs(),
-        typescript({
-            tsconfig: './tsconfig.build.json',
-            typescript: ttypescript,
-            include: ['./**/*.ts+(|x)', '../shared/**/*.ts+(|x)'],
-        }),
+        typescript({ tsconfig: './tsconfig.build.json' }),
     ],
 };
