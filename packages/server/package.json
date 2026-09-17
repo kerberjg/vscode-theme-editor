@@ -8,7 +8,7 @@
     "private": true,
     "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "dependencies": {
-        "@kerberjg-vscode-editor/semantic-tokens-utilities": "^1.0.0",
+        "@kerberjg-vscode-editor/semantic-tokens-utilities": "*",
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
         "path": "^0.12.7",

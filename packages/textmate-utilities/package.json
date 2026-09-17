@@ -30,13 +30,13 @@
         "test": "jest",
         "test:watch": "jest --watch",
         "clean": "rimraf ./lib ./esm",
-        "prebuild": "yarn clean",
+        "prebuild": "npm run clean",
         "build": "rollup -c",
-        "prepack": "yarn build",
+        "prepack": "npm run build",
         "watch": "rollup --watch -c",
         "typecheck": "tsc --noEmit",
         "lint": "eslint src --ext .ts,.tsx .",
-        "precommit": "yarn test && tsc --noEmit --composite false && lint-staged"
+        "precommit": "npm run test && tsc --noEmit --composite false && npx lint-staged"
     },
     "lint-staged": {
         "src/**/*.{ts,tsx}": [

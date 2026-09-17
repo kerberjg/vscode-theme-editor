@@ -9,14 +9,14 @@ Try out: https://el-angel.github.io/theme-editor/
 
 Local usage
 
-```
+```sh
 $ git clone git@github.com:el-angel/theme-editor.git
 $ cd ./theme-editor
-$ yarn install
-$ yarn start
+$ npm install
+$ npm start   # from repo root (uses npm workspaces)
+# or just the client:
+$ npm run start --workspace=@kerberjg-vscode-editor/client
 
-// enable semantic highlighting
-$ cd ./packages/server
-$ yarn start
-
+// enable semantic highlighting server (separate terminal, from repo root)
+$ npx ts-node-dev --respawn packages/server/src/index.ts
 ```

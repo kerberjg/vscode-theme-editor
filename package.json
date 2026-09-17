@@ -5,27 +5,18 @@
     "repository": "https://github.com/kerberjg/vscode-theme-editor.git",
     "author": "Jamie Kerber <kerber.jg@gmail.com>",
     "license": "MIT",
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ]
-    },
+    "workspaces": [
+        "packages/*"
+    ],
     "private": true,
     "scripts": {
-        "start": "concurrently \"yarn p:textmate run build\" \"yarn p:semantic run build\" && yarn start:editor",
-        "start:editor": "yarn workspace @kerberjg-vscode-editor/client run start",
-        "watch": "concurrently \"yarn p:textmate run watch\" \"yarn p:semantic run watch\"",
-        "format": "prettier --write \"packages/*/src/**/*.{ts,tsx,scss,js,json}\"",
-        "deploy": "concurrently \"yarn p:textmate run build\" \"yarn p:semantic run build\" && yarn p:client deploy",
-        "p:server": "yarn workspace @kerberjg-vscode-editor/server",
-        "p:client": "yarn workspace @kerberjg-vscode-editor/client",
-        "p:textmate": "yarn workspace @kerberjg-vscode-editor/textmate-utilities",
-        "p:semantic": "yarn workspace @kerberjg-vscode-editor/semantic-tokens-utilities"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lerna run --concurrency 2 --stream precommit --since HEAD --exclude-dependents"
-        }
+        "start": "concurrently \"npm run build --workspace=@kerberjg-vscode-editor/textmate-utilities\" \"npm run build --workspace=@kerberjg-vscode-editor/semantic-tokens-utilities\" && npm run start:client",
+        "build:textmate": "npm run build --workspace=@kerberjg-vscode-editor/textmate-utilities",
+        "build:semantic": "npm run build --workspace=@kerberjg-vscode-editor/semantic-tokens-utilities",
+        "watch": "concurrently \"npm run watch --workspace=@kerberjg-vscode-editor/textmate-utilities\" \"npm run watch --workspace=@kerberjg-vscode-editor/semantic-tokens-utilities\"",
+        "start:client": "npm start --workspace=@kerberjg-vscode-editor/client",
+        "deploy": "concurrently \"npm run build:textmate\" \"npm run build:semantic\" && npm run deploy --workspace=@kerberjg-vscode-editor/client",
+        "format": "prettier --write \"packages/*/src/**/*.{ts,tsx,scss,js,json}\""
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^2.10.0",
@@ -41,8 +32,6 @@
         "eslint-plugin-react": "7.19.0",
         "eslint-plugin-react-hooks": "^1.6.1",
         "eslint-plugin-simple-import-sort": "^5.0.3",
-        "husky": "^4.2.5",
-        "lerna": "^3.22.0",
         "lint-staged": "^10.2.11",
         "prettier": "^2.0.5",
         "pretty-quick": "^2.0.1",
