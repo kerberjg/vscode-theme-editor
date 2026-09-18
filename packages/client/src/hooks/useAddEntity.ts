@@ -38,7 +38,7 @@ const useAddEntity = () => {
                         existingIds,
                     });
                 } catch (_e) {
-                    confirm(_e.message);
+                    confirm((_e as Error).message);
                     return;
                 }
 

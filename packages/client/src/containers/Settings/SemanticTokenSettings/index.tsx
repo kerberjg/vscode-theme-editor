@@ -20,11 +20,9 @@ const SemanticTokenSettings: React.FC = () => {
 
     const toggleFontStyle = React.useCallback(
         (fontStyle: FontStyleEnum) => {
-            let styles = [...entity!.settings.fontStyle] || [];
-
-            if (typeof styles === 'string') {
-                styles = [styles];
-            }
+            const styles = entity!.settings.fontStyle
+                ? [...entity!.settings.fontStyle]
+                : [];
 
             if (styles.includes(fontStyle)) {
                 styles.splice(styles.indexOf(fontStyle), 1);

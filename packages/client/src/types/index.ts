@@ -36,3 +36,6 @@ export type Entity = GeneralScope | Rule | SemanticToken;
 export interface CSS {
     [classname: string]: React.CSSProperties;
 }
+
+export type * from '@kerberjg-vscode-editor/textmate-utilities/src/types';
+export type * from '@kerberjg-vscode-editor/semantic-tokens-utilities/src/types';

@@ -10,6 +10,7 @@
     "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "dependencies": {
         "@kerberjg-vscode-editor/textmate-utilities": "*",
+        "@kerberjg-vscode-editor/semantic-tokens-utilities": "*",
         "@material-ui/core": "^4.11.0",
         "@material-ui/icons": "^4.9.1",
         "body-parser": "^1.19.0",

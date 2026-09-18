@@ -25,7 +25,9 @@ const RuleSettings: React.FC = () => {
 
     const toggleFontStyle = React.useCallback(
         (fontStyle: FontStyleEnum) => {
-            let styles = [...rule!.settings.fontStyle] || [];
+            let styles = rule!.settings.fontStyle
+                ? [...rule!.settings.fontStyle]
+                : [];
 
             if (typeof styles === 'string') {
                 styles = [styles];
