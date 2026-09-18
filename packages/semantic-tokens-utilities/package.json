@@ -3,53 +3,11 @@
     "version": "0.0.2",
     "description": "Semantic Tokens Utilities",
     "private": true,
-    "main": "lib/index.js",
-    "module": "lib/index.es.js",
-    "typings": "lib/semantic-tokens-utilities/src/index.d.ts",
-    "keywords": [
-        "semantic",
-        "highlighting",
-        "tokens",
-        "vscode",
-        "theme",
-        "grammar",
-        "parser"
-    ],
     "author": "Jamie Kerber <kerber.jg@gmail.com>",
-    "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
     "license": "MIT",
-    "directories": {
-        "lib": "lib",
-        "test": "__tests__"
-    },
-    "files": [
-        "lib"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/kerberjg/vscode-theme-editor.git"
-    },
-    "scripts": {
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "clean": "rimraf ./lib",
-        "prebuild": "npm run clean",
-        "build": "rollup -c",
-        "prepack": "npm run build",
-        "watch": "rollup --watch -c",
-        "typecheck": "tsc --noEmit",
-        "lint": "eslint src --ext .ts,.tsx .",
-        "precommit": "npm run test && tsc --noEmit --composite false && lint-staged"
-    },
-    "lint-staged": {
-        "src/**/*.{ts,tsx}": [
-            "pretty-quick --staged",
-            "eslint --fix"
-        ]
-    },
-    "bugs": {
-        "url": "https://github.com/kerberjg/vscode-theme-editor/issues"
-    },
+    "type": "module",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
     "dependencies": {
         "typescript": "^5.9.x",
         "typescript-vscode-sh-plugin": "^0.6.14"

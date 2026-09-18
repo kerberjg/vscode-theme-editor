@@ -49,7 +49,7 @@ const Parser: Parser<SemanticToken> = ({ code, language }: Input) => {
     const program = service.getProgram();
 
     const fileName = host.getScriptFileNames()[0];
-    const sourceFile = program.getSourceFile(fileName);
+    const sourceFile = program?.getSourceFile(fileName);
 
     const span = { start: 0, length: codeDocument.length() };
     const result = service.getEncodedSemanticClassifications(fileName, span);
@@ -62,7 +62,7 @@ const Parser: Parser<SemanticToken> = ({ code, language }: Input) => {
 
         const length = result.spans[i++];
         const classification = result.spans[i++];
-        const position = sourceFile.getLineAndCharacterOfPosition(start);
+        const position = sourceFile?.getLineAndCharacterOfPosition(start) || { line: 0, character: 0 };
 
         const typeIndex = _getTokenTypeIndex(classification) || 0;
         const modifierSet = _getTokenModifierSet(classification);

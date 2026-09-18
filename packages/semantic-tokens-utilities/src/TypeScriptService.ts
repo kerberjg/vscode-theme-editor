@@ -1,6 +1,6 @@
 import path from 'path';
 import ts from 'typescript/lib/tsserverlibrary';
-import { WORKING_FILENAME } from '~/constants';
+import { WORKING_FILENAME } from './constants';
 import { Input } from './Parser';
 
 const compilerOptions: ts.CompilerOptions = {

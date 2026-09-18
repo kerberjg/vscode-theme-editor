@@ -44,7 +44,7 @@ export const getMatch = <T extends Token>(
     token: Token,
     semanticTokens: T[],
 ): TokenWinner<T> | undefined => {
-    let winner: TokenWinner<T> = undefined;
+    let winner: TokenWinner<T> | undefined = undefined;
 
     semanticTokens.forEach(semanticToken => {
         const score = getTokenScore(token, semanticToken);
@@ -63,7 +63,7 @@ export const getMatch = <T extends Token>(
 };
 
 export const getFallback = (token: Token): TokenFallback | undefined => {
-    let winner: { token: TokenFallback; score: number } | undefined = undefined;
+    let winner: { token: TokenFallback; score: number } | undefined;
 
     getTokenFallbackScopes().forEach(tokenDefault => {
         const score = getTokenScore(token, tokenDefault.token);
@@ -75,6 +75,7 @@ export const getFallback = (token: Token): TokenFallback | undefined => {
             };
         }
     });
+
     return winner?.token;
 };
 

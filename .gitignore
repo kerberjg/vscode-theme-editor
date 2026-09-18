@@ -10,12 +10,7 @@ node_modules
 /coverage
 
 # production
-build
-/build
-esm
-/esm
-lib
-/lib
+dist/
 
 
 # misc
@@ -34,3 +29,5 @@ yarn-error.log*
 
 textmate-utilities/cjs
 textmate-utilities/esm
+
+*.tsbuildinfo

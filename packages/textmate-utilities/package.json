@@ -3,9 +3,9 @@
     "version": "0.0.2",
     "description": "TextMate Grammar Parser",
     "private": true,
-    "main": "lib/index.js",
-    "module": "lib/index.es.js",
-    "types": "lib/textmate-utilities/src/index.d.ts",
+    "type": "module",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
     "keywords": [
         "textmate",
         "tmtheme",
@@ -19,9 +19,6 @@
         "lib": "lib",
         "test": "__tests__"
     },
-    "files": [
-        "lib"
-    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/kerberjg/vscode-theme-editor.git"

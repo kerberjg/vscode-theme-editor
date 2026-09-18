@@ -1,29 +1,18 @@
 {
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noImplicitAny": false,
-        "baseUrl": "./",
-        "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
-        "composite": true,
-        "outDir": "lib",
-        "rootDir": "src",
+        "rootDir": "./",
+        "outDir": "dist",
         "paths": {
-            "~/*": ["./src/*"]
-        },
-        "plugins": [
-            {
-                "transform": "@zerollup/ts-transform-paths",
-                "exclude": ["*"]
-            }
-        ]
+            "~/*": [
+                "./src/*"
+            ]
+        }
     },
-    "include": ["./src"]
+    "include": [
+        "./src"
+    ],
+    "exclude": [
+        "./src/__tests__"
+    ]
 }

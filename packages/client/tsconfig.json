@@ -1,32 +1,19 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noImplicitAny": false,
-        "resolveJsonModule": true,
-        "jsx": "react",
-        "baseUrl": "./",
-        "isolatedModules": true,
-        "downlevelIteration": true,
-        "types": ["jest"],
+        "rootDir": "./",
+        "outDir": "dist",
         "paths": {
-            "~/*": ["./src/*"],
-            "@kerberjg-vscode-editor/*": ["../../packages/*/src"]
-        }
+            "~/*": [
+                "./src/*"
+            ]
+        },
+        "jsx": "preserve"
     },
-    "references": [
-        { "path": "../../packages/semantic-tokens-utilities" },
-        { "path": "../../packages/textmate-utilities" }
+    "include": [
+        "./src"
     ],
-    "include": ["./src"],
-    "exclude": ["./node_modules"]
+    "exclude": [
+        "./src/__tests__"
+    ]
 }

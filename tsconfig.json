@@ -1,7 +1,11 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "target": "es6",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -9,19 +13,19 @@
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "noImplicitAny": false,
         "resolveJsonModule": true,
-        "jsx": "react",
-        "baseUrl": "./",
-        "isolatedModules": true,
-        "downlevelIteration": true,
+        "isolatedModules": false,
         "declaration": true,
         "declarationMap": true,
-        "paths": {
-            "@kerberjg-vscode-editor/*": ["packages/*/src"]
-        }
+        "types": [
+            "node",
+            "jest"
+        ]
     },
-    "include": ["packages"],
-    "exclude": ["packages/*/esm", "packages/*/dist", "node_modules"]
+    "exclude": [
+        "node_modules",
+        "packages/**/*.js"
+    ]
 }

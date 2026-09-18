@@ -7,6 +7,8 @@
     },
     "private": true,
     "homepage": "https://github.com/kerberjg/vscode-theme-editor#readme",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
     "dependencies": {
         "@kerberjg-vscode-editor/semantic-tokens-utilities": "*",
         "body-parser": "^1.19.0",
@@ -22,7 +24,6 @@
         "ts-node-dev": "^1.0.0-pre.52",
         "tslib": "^2.0.0"
     },
-    "type": "module",
     "scripts": {
         "watch": "ts-node-dev --respawn ./src/index.ts",
         "start": "ts-node-dev ./src/index.ts",
