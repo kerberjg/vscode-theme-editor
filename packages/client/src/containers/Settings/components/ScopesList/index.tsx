@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { Rule } from '../../../../types';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 interface Props {
     scopes: Rule['scope'];
