@@ -1,17 +1,20 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "rootDir": "./",
         "outDir": "dist",
-        "paths": {
-            "~/*": [
-                "./src/*"
-            ]
-        },
-        "jsx": "preserve"
+        "rootDir": "./src",
+        "allowJs": true,
+        "target": "es2015",
+        "module": "esnext",
+        "jsx": "preserve",
+        "isolatedModules": false,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
     },
     "include": [
-        "./src"
+        "./src",
+        "global.d.ts"
     ],
     "exclude": [
         "./src/__tests__"

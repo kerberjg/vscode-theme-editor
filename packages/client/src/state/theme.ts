@@ -1,8 +1,8 @@
 import { atom, DefaultValue, selector } from 'recoil';
 
-import storage from '~/services/storage';
+import storage from '../services/storage';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
 type Theme = 'dark' | 'light';
 

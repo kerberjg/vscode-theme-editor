@@ -11,24 +11,24 @@ import {
     useSetRecoilState,
 } from 'recoil';
 
-import { rulesState, ruleState } from '~/state/rules';
-import { semanticTokensState } from '~/state/semanticTokens';
-import { entitySettingsState } from '~/state/ui';
+import { rulesState, ruleState } from '../../../../state/rules';
+import { semanticTokensState } from '../../../../state/semanticTokens';
+import { entitySettingsState } from '../../../../state/ui';
 
-import { sublineSelected } from '~/containers/Code/components/CodeView';
+import { sublineSelected } from '../../../../containers/Code/components/CodeView';
 
-import useAddEntity from '~/hooks/useAddEntity';
-import useViewEntity from '~/hooks/useViewEntity';
+import useAddEntity from '../../../../hooks/useAddEntity';
+import useViewEntity from '../../../../hooks/useViewEntity';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../../../../constants';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../../../../helpers/state';
 
-import { SemanticToken } from '~/types';
+import { SemanticToken } from '../../../../types';
 
 import css from './styles.module.scss';
 
-import { activateRuleByScope } from '~/selectors/activateRule';
+import { activateRuleByScope } from '../../../../selectors/activateRule';
 
 export const _textmateScopesState = atom<string[]>({
     key: atomKey('Info', 'TextMateScopes'),

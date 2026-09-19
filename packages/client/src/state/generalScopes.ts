@@ -1,14 +1,14 @@
 import { selectorFamily } from 'recoil';
 
-import { themeStyle } from '~/state/theme';
+import { themeStyle } from '../state/theme';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import generalScopesDefault from '~/helpers/generalScopesDefault';
-import { selectorKey } from '~/helpers/state';
-import factory from '~/helpers/tokenStateFactory';
+import generalScopesDefault from '../helpers/generalScopesDefault';
+import { selectorKey } from '../helpers/state';
+import factory from '../helpers/tokenStateFactory';
 
-import { GeneralScope } from '~/types';
+import { GeneralScope } from '../types';
 
 const getScopeDefault = (scope: string, style: 'light' | 'dark'): { id: string; color: string } => {
     const _scope = generalScopesDefault[scope];

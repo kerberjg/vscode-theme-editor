@@ -1,12 +1,12 @@
 import { atom, selector } from 'recoil';
 
-import { generalScopeState } from '~/state/generalScopes';
-import { rulesState } from '~/state/rules';
-import { semanticTokensState } from '~/state/semanticTokens';
+import { generalScopeState } from '../state/generalScopes';
+import { rulesState } from '../state/rules';
+import { semanticTokensState } from '../state/semanticTokens';
 
-import { GENERAL_SCOPES } from '~/constants';
+import { GENERAL_SCOPES } from '../constants';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
 export const filter = atom({
     key: atomKey('Sidebar', 'FilterAdd'),

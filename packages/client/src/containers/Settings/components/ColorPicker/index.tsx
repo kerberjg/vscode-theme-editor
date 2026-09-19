@@ -3,7 +3,7 @@ import ColorTextIcon from '@material-ui/icons/FormatColorText';
 import chroma from 'chroma-js';
 import { debounce } from 'lodash';
 
-import getContrastColor from '~/helpers/getContrastColor';
+import getContrastColor from '../../../../helpers/getContrastColor';
 
 import css from './styles.module.scss';
 

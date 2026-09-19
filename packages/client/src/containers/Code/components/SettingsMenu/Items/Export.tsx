@@ -1,15 +1,15 @@
 import React from 'react';
 import { useRecoilCallback } from 'recoil';
 
-import { generalScopesState } from '~/state/generalScopes';
-import { rulesState } from '~/state/rules';
-import { semanticTokensState } from '~/state/semanticTokens';
-import { themeStyle } from '~/state/theme';
+import { generalScopesState } from '../../../../../state/generalScopes';
+import { rulesState } from '../../../../../state/rules';
+import { semanticTokensState } from '../../../../../state/semanticTokens';
+import { themeStyle } from '../../../../../state/theme';
 
-import SettingsMenuItem from '~/containers/Code/components/SettingsMenu/Item';
+import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
 
-import { GeneralScope, Rule, SemanticToken } from '~/types';
-import { SemanticTokenRules, TextMateRule, Theme } from '~/types/theme';
+import { GeneralScope, Rule, SemanticToken } from '../../../../../types';
+import { SemanticTokenRules, TextMateRule, Theme } from '../../../../../types/theme';
 
 interface Options {
     semanticTokens: SemanticToken[];
@@ -27,8 +27,8 @@ const createSemanticTokensObj = (tokens: SemanticToken[]): SemanticTokenRules =>
                 foreground: token.settings.foreground,
                 ...(token.settings.fontStyle!.length > 0
                     ? {
-                          fontStyle: token.settings.fontStyle!.join(' '),
-                      }
+                        fontStyle: token.settings.fontStyle!.join(' '),
+                    }
                     : {}),
             },
         }),
@@ -42,8 +42,8 @@ const ruleTransformer = (rule: Rule): TextMateRule => ({
     settings: {
         ...(rule.settings.fontStyle!.length > 0
             ? {
-                  fontStyle: rule.settings.fontStyle!.join(' '),
-              }
+                fontStyle: rule.settings.fontStyle!.join(' '),
+            }
             : {}),
         foreground: rule.settings.foreground,
     },

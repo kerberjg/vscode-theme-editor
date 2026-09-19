@@ -1,6 +1,6 @@
 import React from 'react';
 
-import getSwatches from '~/helpers/swatches';
+import getSwatches from '../../../../helpers/swatches';
 
 import css from './styles.module.scss';
 

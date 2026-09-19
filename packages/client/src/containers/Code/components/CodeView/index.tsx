@@ -6,18 +6,18 @@ import { sortBy } from 'lodash';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 import { selector, useRecoilState } from 'recoil';
 
-import parsedCode from '~/state/code';
-import { rulesState } from '~/state/rules';
-import { semanticTokens, semanticTokensState } from '~/state/semanticTokens';
+import parsedCode from '../../../../state/code';
+import { rulesState } from '../../../../state/rules';
+import { semanticTokens, semanticTokensState } from '../../../../state/semanticTokens';
 
-import { infoState } from '~/containers/Code/components/Info';
-import Line from '~/containers/Code/components/Line';
-import SubLine, { SubLineCallback } from '~/containers/Code/components/SubLine';
+import { infoState } from '../../../../containers/Code/components/Info';
+import Line from '../../../../containers/Code/components/Line';
+import SubLine, { SubLineCallback } from '../../../../containers/Code/components/SubLine';
 
-// import useViewRule from '~/hooks/useViewRule';
-import useViewEntity from '~/hooks/useViewEntity';
+// import useViewRule from '../../../../hooks/useViewRule';
+import useViewEntity from '../../../../hooks/useViewEntity';
 
-import { selectorKey } from '~/helpers/state';
+import { selectorKey } from '../../../../helpers/state';
 
 import css from './styles.module.scss';
 

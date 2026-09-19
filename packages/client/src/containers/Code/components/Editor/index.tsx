@@ -2,10 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import { useRecoilValue } from 'recoil';
 
-import { editCodeState } from '~/state/code';
+import { editCodeState } from '../../../../state/code';
 
-import CodeInput from '~/containers/Code/components/CodeInput';
-import CodeView from '~/containers/Code/components/CodeView';
+import CodeInput from '../../../../containers/Code/components/CodeInput';
+import CodeView from '../../../../containers/Code/components/CodeView';
 
 import css from './styles.module.scss';
 

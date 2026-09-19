@@ -2,9 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 import { useRecoilState } from 'recoil';
 
-import mode from '~/state/mode';
+import mode from '../../../../state/mode';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../../../../constants';
 
 import css from './styles.module.scss';
 

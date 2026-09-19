@@ -3,23 +3,23 @@ import { initialize as initSemantic, Presets } from '@kerberjg-vscode-editor/sem
 import { initialize as initTextMate } from '@kerberjg-vscode-editor/textmate-utilities';
 import { RecoilRoot } from 'recoil';
 
-import { rawCode } from '~/state/code';
-import { GENERAL_SCOPE_STATE_ID, generalScopeState } from '~/state/generalScopes';
-import { ruleIds, RULES_STATE_ID, ruleState } from '~/state/rules';
-import { SEMANTIC_STATE_ID, semanticTokenIds, semanticTokenState } from '~/state/semanticTokens';
-import { themeStyle } from '~/state/theme';
+import { rawCode } from './state/code';
+import { GENERAL_SCOPE_STATE_ID, generalScopeState } from './state/generalScopes';
+import { ruleIds, RULES_STATE_ID, ruleState } from './state/rules';
+import { SEMANTIC_STATE_ID, semanticTokenIds, semanticTokenState } from './state/semanticTokens';
+import { themeStyle } from './state/theme';
 
-import Code from '~/containers/Code';
-import SettingsMenu from '~/containers/Code/components/SettingsMenu';
-import Settings from '~/containers/Settings';
-import Sidebar from '~/containers/Sidebar';
-import StatusBar from '~/containers/StatusBar';
+import Code from './containers/Code';
+import SettingsMenu from './containers/Code/components/SettingsMenu';
+import Settings from './containers/Settings';
+import Sidebar from './containers/Sidebar';
+import StatusBar from './containers/StatusBar';
 
-import storage from '~/services/storage';
+import storage from './services/storage';
 
-import { atomKey } from '~/helpers/state';
+import { atomKey } from './helpers/state';
 
-import { GeneralScope, Rule, SemanticToken } from '~/types';
+import { GeneralScope, Rule, SemanticToken } from './types';
 
 import css from './App.module.scss';
 

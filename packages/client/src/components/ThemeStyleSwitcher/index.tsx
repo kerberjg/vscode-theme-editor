@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 
-import { getModalState } from '~/state/modal';
-import { themeStyle } from '~/state/theme';
+import { getModalState } from '../../state/modal';
+import { themeStyle } from '../../state/theme';
 
-import Modal from '~/components/ui/Modal';
-import QuickInput from '~/components/ui/QuickInput';
+import Modal from '../../components/ui/Modal';
+import QuickInput from '../../components/ui/QuickInput';
 
 interface Option {
     label: string;

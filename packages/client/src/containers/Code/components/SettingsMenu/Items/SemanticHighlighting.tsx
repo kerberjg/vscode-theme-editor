@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { States, useSemanticHighlighting } from '~/state/semanticTokens';
+import { States, useSemanticHighlighting } from '../../../../../state/semanticTokens';
 
-import SettingsMenuItem from '~/containers/Code/components/SettingsMenu/Item';
+import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
 
 import css from './styles.module.scss';
 

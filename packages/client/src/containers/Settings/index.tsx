@@ -1,14 +1,14 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import mode from '~/state/mode';
-import { entitySettingsState } from '~/state/ui';
+import mode from '../../state/mode';
+import { entitySettingsState } from '../../state/ui';
 
-import GeneralSettings from '~/containers/Settings/GeneralSettings';
-import RuleSettings from '~/containers/Settings/RuleSettings';
-import SemanticTokenSettings from '~/containers/Settings/SemanticTokenSettings';
+import GeneralSettings from '../../containers/Settings/GeneralSettings';
+import RuleSettings from '../../containers/Settings/RuleSettings';
+import SemanticTokenSettings from '../../containers/Settings/SemanticTokenSettings';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../../constants';
 
 const Settings: React.FC = () => {
     // const rules = useRecoilValue(rulesState);

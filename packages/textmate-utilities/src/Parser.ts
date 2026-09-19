@@ -1,6 +1,6 @@
 import { CodeDocument, Supplier } from '@kerberjg-vscode-editor/shared';
 import { IGrammar, Registry } from 'monaco-textmate';
-import { TextMateNode } from '~/types';
+import { TextMateNode } from './types';
 
 export interface Options<LanguageScopeNames extends string> {
     filePaths: {

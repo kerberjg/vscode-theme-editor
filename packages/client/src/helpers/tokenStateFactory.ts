@@ -7,13 +7,13 @@ import {
     selectorFamily,
 } from 'recoil';
 
-import storage from '~/services/storage';
+import storage from '../services/storage';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
-import { Base } from '~/types';
+import { Base } from '../types';
 
 interface Options<T extends Base<EntityType>> {
     state: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { Rule } from '~/types';
+import { Rule } from '../../../../types';
 
 import css from './styles.module.scss';
 

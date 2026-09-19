@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { sidebarGeneralScopes } from '~/state/sidebar';
+import { sidebarGeneralScopes } from '../../../../state/sidebar';
 
-import GeneralScope from '~/containers/Sidebar/components/GeneralScope';
+import GeneralScope from '../../../../containers/Sidebar/components/GeneralScope';
 
 const GeneralScopes: React.FC = () => {
     const generalScopes = useRecoilValue(sidebarGeneralScopes);

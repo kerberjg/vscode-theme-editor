@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRecoilCallback } from 'recoil';
 
-import SettingsMenuItem from '~/containers/Code/components/SettingsMenu/Item';
+import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
 
-import { confirm } from '~/services/dialog';
+import { confirm } from '../../../../../services/dialog';
 
-import resetState from '~/recoil/snapshot/reset';
+import resetState from '../../../../../recoil/snapshot/reset';
 
 const New: React.FC = () => {
     const onClick = useRecoilCallback(({ snapshot, gotoSnapshot }) => (): void => {

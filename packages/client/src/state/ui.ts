@@ -1,10 +1,10 @@
 import { atom, DefaultValue, selector } from 'recoil';
 
-import mode from '~/state/mode';
+import mode from '../state/mode';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
-import { Base } from '~/types';
+import { Base } from '../types';
 
 const _entitySettingsState = atom<Base | undefined>({
     key: atomKey('Settings', 'Entity'),
