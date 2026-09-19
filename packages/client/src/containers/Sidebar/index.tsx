@@ -12,7 +12,7 @@ import Toolbar from '../../containers/Sidebar/components/Toolbar';
 
 import { EntityType } from '../../constants';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 import generalScopesStateCSS from '../../selectors/generalScopeCSS';
 

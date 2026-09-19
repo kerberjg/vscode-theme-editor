@@ -5,7 +5,7 @@ import { States, useSemanticHighlighting } from '../../../../../state/semanticTo
 
 import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 const classMap = {
     [States.Active]: 'active',

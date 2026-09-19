@@ -18,7 +18,7 @@ import Export from './Items/Export';
 import New from './Items/New';
 import SemanticHighlighting from './Items/SemanticHighlighting';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 const SettingsMenu: React.FC = () => {
     const [open, setOpen] = React.useState(false);

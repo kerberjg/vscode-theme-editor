@@ -6,7 +6,7 @@ import mode from '../../../../state/mode';
 
 import { EntityType } from '../../../../constants';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 const Toolbar: React.FC = () => {
     const [currentMode, setMode] = useRecoilState(mode);

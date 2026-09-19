@@ -6,7 +6,7 @@ import { createDialogElement, dialogRootElement } from '../../../services/dialog
 
 import useOutsideClick from '../../../hooks/useOutsideClick';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 interface Props {
     onClose: () => void;

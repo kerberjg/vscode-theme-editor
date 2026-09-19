@@ -12,7 +12,7 @@ import useAddEntity from '../../../../hooks/useAddEntity';
 
 import { EntityType } from '../../../../constants';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 const create = (input: string, type: EntityType) => ({
     input: {

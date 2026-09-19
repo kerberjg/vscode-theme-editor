@@ -2,7 +2,7 @@ import React from 'react';
 
 import getSwatches from '../../../../helpers/swatches';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 interface Props {
     color: string;
