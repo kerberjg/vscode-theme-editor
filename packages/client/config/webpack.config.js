@@ -14,9 +14,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
@@ -57,8 +57,12 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
-  const isEnvDevelopment = webpackEnv === 'development';
-  const isEnvProduction = webpackEnv === 'production';
+  // webpack-cli passes --env as an object ({ production: true }), while direct
+  // calls use a string ('production'). Accept both forms.
+  const isEnvDevelopment =
+    webpackEnv === 'development' || webpackEnv?.development === true;
+  const isEnvProduction =
+    webpackEnv === 'production' || webpackEnv?.production === true;
 
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
@@ -144,23 +148,9 @@ module.exports = function (webpackEnv) {
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry: [
-      // Include an alternative client for WebpackDevServer. A client's job is to
-      // connect to WebpackDevServer by a socket and get notified about changes.
-      // When you save a file, the client will either apply hot updates (in case
-      // of CSS changes), or refresh the page (in case of JS changes). When you
-      // make a syntax error, this client will display a syntax error overlay.
-      // Note: instead of the default WebpackDevServer client, we use a custom one
-      // to bring better experience for Create React App users. You can replace
-      // the line below with these two lines if you prefer the stock client:
-      // require.resolve('webpack-dev-server/client') + '?/',
-      // require.resolve('webpack/hot/dev-server'),
-      isEnvDevelopment &&
-      require.resolve('react-dev-utils/webpackHotDevClient'),
-      // Finally, this is your app's code:
+      // webpack-dev-server v5 injects its own client, so no dev entry is needed here.
+      // This is your app's code:
       paths.appIndexJs,
-      // We include the app code last so that if there is a runtime error during
-      // initialization, it doesn't blow up the WebpackDevServer client, and
-      // changing JS code would still trigger a refresh.
     ].filter(Boolean),
     output: {
       // The build folder.
@@ -190,8 +180,11 @@ module.exports = function (webpackEnv) {
         ((info) =>
           path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
       // Prevents conflicts when multiple webpack runtimes (from different apps)
-      // are used on the same page.
-      jsonpFunction: `webpackJsonp${appPackageJson.name}`,
+      // are used on the same page. In webpack 5, `output.chunkLoadingGlobal`
+      // is namespaced by `output.uniqueName`; both must be unique per app to
+      // avoid runtime collisions when bundling more than one SPA into a page.
+      chunkLoadingGlobal: `webpackChunk_${appPackageJson.name.replace(/[^a-zA-Z0-9_-]/g, '_')}`,
+      uniqueName: `${appPackageJson.name}.bundle`,
       // this defaults to 'window', but by setting it to 'this' then
       // module chunks which are built will work in web workers as well.
       globalObject: 'this',
@@ -238,7 +231,6 @@ module.exports = function (webpackEnv) {
               ascii_only: true,
             },
           },
-          sourceMap: shouldUseSourceMap,
         }),
         // This is only used in production mode
         new OptimizeCSSAssetsPlugin({
@@ -538,8 +530,6 @@ module.exports = function (webpackEnv) {
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
       new webpack.DefinePlugin(env.stringified),
-      // This is necessary to emit hot updates (currently CSS only):
-      isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       // Watcher doesn't work well if you mistype casing in a path so we use
       // a plugin that prints an error when you attempt to do this.
       // See https://github.com/facebook/create-react-app/issues/240
@@ -563,23 +553,13 @@ module.exports = function (webpackEnv) {
       //   `index.html`
       // - "entrypoints" key: Array of files which are included in `index.html`,
       //   can be used to reconstruct the HTML if necessary
-      new ManifestPlugin({
+      new WebpackManifestPlugin({
         fileName: 'asset-manifest.json',
         publicPath: paths.publicUrlOrPath,
-        generate: (seed, files, entrypoints) => {
-          const manifestFiles = files.reduce((manifest, file) => {
-            manifest[file.name] = file.path;
-            return manifest;
-          }, seed);
-          const entrypointFiles = entrypoints.main.filter(
-            (fileName) => !fileName.endsWith('.map')
-          );
-
-          return {
-            files: manifestFiles,
-            entrypoints: entrypointFiles,
-          };
-        },
+        generate: (seed, files, entries) => ({
+          files: entries.reduce((m, f) => ({ ...m, [f]: f }), seed),
+          entrypoints: entries.filter((f) => !f.endsWith('.map')),
+        }),
       }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how webpack interprets its code. This is a practical
@@ -590,19 +570,15 @@ module.exports = function (webpackEnv) {
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
       isEnvProduction &&
-      new WorkboxWebpackPlugin.GenerateSW({
-        clientsClaim: true,
-        exclude: [/\.map$/, /asset-manifest\.json$/],
-        importWorkboxFrom: 'cdn',
-        navigateFallback: paths.publicUrlOrPath + 'index.html',
-        navigateFallbackBlacklist: [
-          // Exclude URLs starting with /_, as they're likely an API call
-          new RegExp('^/_'),
-          // Exclude any URLs whose last part seems to be a file extension
-          // as they're likely a resource and not a SPA route.
-          // URLs containing a "?" character won't be blacklisted as they're likely
-          // a route with query params (e.g. auth callbacks).
-          new RegExp('/[^/?]+\\.[^/]+$'),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: paths.appPublic,
+            to: paths.appBuild,
+            globOptions: {
+              ignore: ['**/index.html'],
+            },
+          },
         ],
       }),
       // TypeScript type checking
