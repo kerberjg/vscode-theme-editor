@@ -1,8 +1,8 @@
 import { uniqueId } from 'lodash';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import { Rule } from '~/types';
+import { Rule } from '../types';
 
 const createName = (input?: Partial<Rule>): string => {
     if (!input) {
@@ -35,12 +35,12 @@ const createRule = (input: Partial<Rule>, options: Options): Rule => {
     const filteredScopes = !filterScope
         ? input?.scope || []
         : (input?.scope || []).map(scope => {
-              const splitted = scope.split('.');
-              // remove extension from scope to support more language
-              // otherwise theme will only work for this language
-              splitted.pop();
-              return splitted.join('.');
-          });
+            const splitted = scope.split('.');
+            // remove extension from scope to support more language
+            // otherwise theme will only work for this language
+            splitted.pop();
+            return splitted.join('.');
+        });
 
     let id = uniqueId();
 

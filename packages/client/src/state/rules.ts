@@ -1,8 +1,8 @@
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import factory from '~/helpers/tokenStateFactory';
+import factory from '../helpers/tokenStateFactory';
 
-import { Rule } from '~/types';
+import { Rule } from '../types';
 
 const {
     TREE_ID: RULES_STATE_ID,

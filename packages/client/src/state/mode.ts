@@ -1,8 +1,8 @@
 import { atom, selector } from 'recoil';
 
-import { entitySettingsState } from '~/state/ui';
+import { entitySettingsState } from '../state/ui';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
 import { EntityType } from './../constants/index';
 

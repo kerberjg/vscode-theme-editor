@@ -1,13 +1,13 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { generalScopeState } from '~/state/generalScopes';
-import { entitySettingsState } from '~/state/ui';
+import { generalScopeState } from '../../../state/generalScopes';
+import { entitySettingsState } from '../../../state/ui';
 
-// import editGeneralScopeState from '~/state/generalScopes/edit';
-import PanelSettings from '~/components/ui/PanelSettings';
+// import editGeneralScopeState from '../../../state/generalScopes/edit';
+import PanelSettings from '../../../components/ui/PanelSettings';
 
-import useViewEntity from '~/hooks/useViewEntity';
+import useViewEntity from '../../../hooks/useViewEntity';
 
 const GeneralSettings: React.FC = () => {
     const input = useRecoilValue(entitySettingsState);

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { uniqueId } from 'lodash';
 
-import Confirm from '~/components/ui/Confirm';
-import Modal from '~/components/ui/Modal';
+import Confirm from '../components/ui/Confirm';
+import Modal from '../components/ui/Modal';
 
 type ModalProps = React.ComponentProps<typeof Modal>;
 

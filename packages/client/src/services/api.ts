@@ -1,6 +1,6 @@
 import { SemanticTokensParserResult } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
-import { BACKEND_URL } from '~/constants';
+import { BACKEND_URL } from '../constants';
 
 class APIService {
     private _baseUrl = BACKEND_URL;

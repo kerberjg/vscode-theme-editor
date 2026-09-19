@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 
-import { createDialogElement, dialogRootElement } from '~/services/dialog';
+import { createDialogElement, dialogRootElement } from '../../../services/dialog';
 
-import useOutsideClick from '~/hooks/useOutsideClick';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 
 import css from './styles.module.scss';
 

@@ -22,8 +22,6 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
-const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
-const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -57,12 +55,9 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
-  // webpack-cli passes --env as an object ({ production: true }), while direct
-  // calls use a string ('production'). Accept both forms.
-  const isEnvDevelopment =
-    webpackEnv === 'development' || webpackEnv?.development === true;
-  const isEnvProduction =
-    webpackEnv === 'production' || webpackEnv?.production === true;
+  const modeStr = typeof webpackEnv === 'string' ? webpackEnv : (webpackEnv?.mode ?? process.env.NODE_ENV);
+  const isEnvDevelopment = modeStr === 'development';
+  const isEnvProduction = modeStr === 'production';
 
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
@@ -281,8 +276,7 @@ module.exports = function (webpackEnv) {
       // `web` extension prefixes have been added for better support
       // for React Native Web.
       extensions: paths.moduleFileExtensions
-        .map((ext) => `.${ext}`)
-        .filter((ext) => useTypeScript || !ext.includes('ts')),
+        .map((ext) => `.${ext}`),
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -306,180 +300,107 @@ module.exports = function (webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        // Disable require.ensure as it's not a standard language feature.
-        { parser: { requireEnsure: false } },
-
-        // First, run the linter.
-        // It's important to do this before Babel processes the JS.
         {
-          // "oneOf" will traverse all following loaders until one will
-          // match the requirements. When no loader matches it will fall
-          // back to the "file" loader at the end of the loader list.
-          oneOf: [
-            // "url" loader works like "file" loader except that it embeds assets
-            // smaller than specified limit in bytes as data URLs to avoid requests.
-            // A missing `test` is equivalent to a match.
-            {
-              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-              loader: require.resolve('url-loader'),
-              options: {
-                limit: imageInlineSizeLimit,
-                name: 'static/media/[name].[hash:8].[ext]',
-              },
-            },
-            // Process application JS with Babel.
-            // The preset includes JSX, Flow, TypeScript, and some ESnext features.
-            {
-              test: /\.(js|mjs|jsx|ts|tsx)$/,
-              include: paths.appSrc,
-              loader: require.resolve('babel-loader'),
-              options: {
-                customize: require.resolve(
-                  'babel-preset-react-app/webpack-overrides'
-                ),
-
-                plugins: [
-                  [
-                    require.resolve('babel-plugin-named-asset-import'),
-                    {
-                      loaderMap: {
-                        svg: {
-                          ReactComponent:
-                            '@svgr/webpack?-svgo,+titleProp,+ref![path]',
-                        },
-                      },
-                    },
-                  ],
-                ],
-                // This is a feature of `babel-loader` for webpack (not Babel itself).
-                // It enables caching results in ./node_modules/.cache/babel-loader/
-                // directory for faster rebuilds.
-                cacheDirectory: true,
-                // See #6846 for context on why cacheCompression is disabled
-                cacheCompression: false,
-                compact: isEnvProduction,
-              },
-            },
-            // Process any JS outside of the app with Babel.
-            // Unlike the application JS, we only compile the standard ES features.
-            {
-              test: /\.(js|mjs)$/,
-              exclude: /@babel(?:\/|\\{1,2})runtime/,
-              loader: require.resolve('babel-loader'),
-              options: {
-                babelrc: false,
-                configFile: false,
-                compact: false,
-                presets: [
-                  [
-                    require.resolve('babel-preset-react-app/dependencies'),
-                    { helpers: true },
-                  ],
-                ],
-                cacheDirectory: true,
-                // See #6846 for context on why cacheCompression is disabled
-                cacheCompression: false,
-
-                // Babel sourcemaps are needed for debugging into node_modules
-                // code.  Without the options below, debuggers like VSCode
-                // show incorrect code and set breakpoints on the wrong lines.
-                sourceMaps: shouldUseSourceMap,
-                inputSourceMap: shouldUseSourceMap,
-              },
-            },
-            // "postcss" loader applies autoprefixer to our CSS.
-            // "css" loader resolves paths in CSS and adds assets as dependencies.
-            // "style" loader turns CSS into JS modules that inject <style> tags.
-            // In production, we use MiniCSSExtractPlugin to extract that CSS
-            // to a file, but in development "style" loader enables hot editing
-            // of CSS.
-            // By default we support CSS Modules with the extension .module.css
-            {
-              test: cssRegex,
-              exclude: cssModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
-              }),
-              // Don't consider CSS imports dead code even if the
-              // containing package claims to have no side effects.
-              // Remove this when webpack adds a warning or an error for this.
-              // See https://github.com/webpack/webpack/issues/6571
-              sideEffects: true,
-            },
-            // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-            // using the extension .module.css
-            {
-              test: cssModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
-                modules: {
-                  getLocalIdent: (
-                    context,
-                    localIdentName,
-                    localName,
-                    options
-                  ) => {
-                    return `${localIdentName}-[hash:base64:5]`;
-                  },
-                },
-              }),
-            },
-            // Opt-in support for SASS (using .scss or .sass extensions).
-            // By default we support SASS Modules with the
-            // extensions .module.scss or .module.sass
-            {
-              test: sassRegex,
-              exclude: sassModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                },
-                'sass-loader'
-              ),
-              // Don't consider CSS imports dead code even if the
-              // containing package claims to have no side effects.
-              // Remove this when webpack adds a warning or an error for this.
-              // See https://github.com/webpack/webpack/issues/6571
-              sideEffects: true,
-            },
-            // Adds support for CSS Modules, but using SASS
-            // using the extension .module.scss or .module.sass
-            {
-              test: sassModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modules: {
-                    localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                  },
-                },
-                'sass-loader'
-              ),
-            },
-            // "file" loader makes sure those assets get served by WebpackDevServer.
-            // When you `import` an asset, you get its (virtual) filename.
-            // In production, they would get copied to the `build` folder.
-            // This loader doesn't use a "test" so it will catch all modules
-            // that fall through the other loaders.
-            {
-              loader: require.resolve('file-loader'),
-              // Exclude `js` files to keep "css" loader working as it injects
-              // its runtime that would otherwise be processed through "file" loader.
-              // Also exclude `html` and `json` extensions so they get processed
-              // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-              options: {
-                name: 'static/media/[name].[hash:8].[ext]',
-              },
-            },
-            // ** STOP ** Are you adding a new loader?
-            // Make sure to add the new loader(s) before the "file" loader.
-          ],
+          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+          loader: require.resolve('url-loader'),
+          options: {
+            limit: imageInlineSizeLimit,
+            name: 'static/media/[name].[hash:8].[ext]',
+          },
         },
+        // // Local npm-workspace packages (textmate-utilities / semantic-tokens-utilities) ship raw TS source.
+        // // Compile them with ts-loader so they don't have to be pre-built before the client app builds.
+        // {
+        //   test: /\.tsx?$/,
+        //   use: {
+        //     loader: require.resolve('ts-loader'),
+        //     options: {
+        //       transpileOnly: true, // No type checking here; each package validates itself via tsc.
+        //     },
+        //   },
+        // },
+        // Process application JS with Babel.
+        // The preset includes JSX, Flow, TypeScript, and some ESnext features.
+        {
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          // include: [
+          // include: paths.appSrc,
+          //   path.resolve(__dirname, '../textmate-utilities/src'),
+          //   path.resolve(__dirname, '../semantic-tokens-utilities/src'),
+          //   path.resolve(__dirname, '../shared/src'),
+          // ],
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          options: {
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            cacheDirectory: true,
+            // See #6846 for context on why cacheCompression is disabled
+            cacheCompression: false,
+            compact: isEnvProduction,
+            babelrc: true,
+          },
+        },
+        // // Process any JS outside of the app with Babel.
+        // // Unlike the application JS, we only compile the standard ES features.
+        // {
+        //   test: /\.(js|mjs)$/,
+        //   exclude: /@babel(?:\/|\\{1,2})runtime/,
+        //   loader: 'babel-loader',
+        //   options: {
+        //     babelrc: false,
+        //     configFile: false,
+        //     compact: false,
+        //     cacheDirectory: true,
+        //     // See #6846 for context on why cacheCompression is disabled
+        //     cacheCompression: false,
+
+        //     // Babel sourcemaps are needed for debugging into node_modules
+        //     // code.  Without the options below, debuggers like VSCode
+        //     // show incorrect code and set breakpoints on the wrong lines.
+        //     sourceMaps: shouldUseSourceMap,
+        //     inputSourceMap: shouldUseSourceMap,
+        //   },
+        // },
+        // "postcss" loader applies autoprefixer to our CSS.
+        // "css" loader resolves paths in CSS and adds assets as dependencies.
+        // "style" loader turns CSS into JS modules that inject <style> tags.
+        // In production, we use MiniCSSExtractPlugin to extract that CSS
+        // to a file, but in development "style" loader enables hot editing
+        // of CSS.
+        // By default we support CSS Modules with the extension .module.css
+        {
+          test: cssRegex,
+          exclude: cssModuleRegex,
+          use: getStyleLoaders({
+            importLoaders: 1,
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+          }),
+          // Don't consider CSS imports dead code even if the
+          // containing package claims to have no side effects.
+          // Remove this when webpack adds a warning or an error for this.
+          // See https://github.com/webpack/webpack/issues/6571
+          sideEffects: true,
+        },
+        // "file" loader makes sure those assets get served by WebpackDevServer.
+        // When you `import` an asset, you get its (virtual) filename.
+        // In production, they would get copied to the `build` folder.
+        // This loader doesn't use a "test" so it will catch all modules
+        // that fall through the other loaders.
+        {
+          loader: require.resolve('file-loader'),
+          // Exclude `js` files to keep "css" loader working as it injects
+          // its runtime that would otherwise be processed through "file" loader.
+          // Also exclude `html` and `json` extensions so they get processed
+          // by webpacks internal loaders.
+          exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+          options: {
+            name: 'static/media/[name].[hash:8].[ext]',
+          },
+        },
+        // ** STOP ** Are you adding a new loader?
+        // Make sure to add the new loader(s) before the "file" loader.
       ],
     },
     plugins: [
@@ -556,17 +477,27 @@ module.exports = function (webpackEnv) {
       new WebpackManifestPlugin({
         fileName: 'asset-manifest.json',
         publicPath: paths.publicUrlOrPath,
-        generate: (seed, files, entries) => ({
-          files: entries.reduce((m, f) => ({ ...m, [f]: f }), seed),
-          entrypoints: entries.filter((f) => !f.endsWith('.map')),
-        }),
+        generate: (seed, files, entrypoints) => {
+          const manifestFiles = files.reduce((manifest, file) => {
+            manifest[file.name] = file.path;
+            return manifest;
+          }, seed);
+          const entrypointFiles = entrypoints.main.filter(
+            (fileName) => !fileName.endsWith('.map')
+          );
+
+          return {
+            files: manifestFiles,
+            entrypoints: entrypointFiles,
+          };
+        },
       }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how webpack interprets its code. This is a practical
       // solution that requires the user to opt into importing specific locales.
       // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
       // You can remove this if you don't use Moment.js:
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
       isEnvProduction &&
@@ -580,33 +511,6 @@ module.exports = function (webpackEnv) {
             },
           },
         ],
-      }),
-      // TypeScript type checking
-      useTypeScript &&
-      new ForkTsCheckerWebpackPlugin({
-        typescript: resolve.sync('typescript', {
-          basedir: paths.appNodeModules,
-        }),
-        async: isEnvDevelopment,
-        useTypescriptIncrementalApi: true,
-        checkSyntacticErrors: true,
-        resolveModuleNameModule: process.versions.pnp
-          ? `${__dirname}/pnpTs.js`
-          : undefined,
-        resolveTypeReferenceDirectiveModule: process.versions.pnp
-          ? `${__dirname}/pnpTs.js`
-          : undefined,
-        tsconfig: paths.appTsConfig,
-        reportFiles: [
-          '**',
-          '!**/__tests__/**',
-          '!**/?(*.)(spec|test).*',
-          '!**/src/setupProxy.*',
-          '!**/src/setupTests.*',
-        ],
-        silent: true,
-        // The formatter is invoked directly in WebpackDevServerUtils during development
-        formatter: isEnvProduction ? typescriptFormatter : undefined,
       }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize

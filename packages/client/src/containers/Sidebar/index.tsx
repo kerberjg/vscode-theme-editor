@@ -1,20 +1,20 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import mode from '~/state/mode';
+import mode from '../../state/mode';
 
-import Info from '~/containers/Code/components/Info';
-import FilterAdd from '~/containers/Sidebar/components/FilterAdd';
-import GeneralScopes from '~/containers/Sidebar/components/GeneralScopes';
-import Rules from '~/containers/Sidebar/components/Rules';
-import SemanticTokens from '~/containers/Sidebar/components/SemanticTokens';
-import Toolbar from '~/containers/Sidebar/components/Toolbar';
+import Info from '../../containers/Code/components/Info';
+import FilterAdd from '../../containers/Sidebar/components/FilterAdd';
+import GeneralScopes from '../../containers/Sidebar/components/GeneralScopes';
+import Rules from '../../containers/Sidebar/components/Rules';
+import SemanticTokens from '../../containers/Sidebar/components/SemanticTokens';
+import Toolbar from '../../containers/Sidebar/components/Toolbar';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../../constants';
 
 import css from './styles.module.scss';
 
-import generalScopesStateCSS from '~/selectors/generalScopeCSS';
+import generalScopesStateCSS from '../../selectors/generalScopeCSS';
 
 const Sidebar: React.FC = () => {
     const currentMode = useRecoilValue(mode);

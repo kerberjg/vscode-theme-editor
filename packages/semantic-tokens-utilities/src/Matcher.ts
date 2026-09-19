@@ -1,5 +1,5 @@
 import createToken from './CreateToken';
-import { Token, TokenWinner, TokenFallback } from '~/types';
+import { Token, TokenWinner, TokenFallback } from './types';
 import { TOKEN_TYPE_WILDCARD } from './constants';
 import { getTokenFallbackScopes } from './FallbackScopes';
 

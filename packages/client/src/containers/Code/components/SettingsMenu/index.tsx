@@ -3,15 +3,15 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import cx from 'classnames';
 import { useRecoilValue } from 'recoil';
 
-import { generalScopeState } from '~/state/generalScopes';
+import { generalScopeState } from '../../../../state/generalScopes';
 
-import Open from '~/containers/Code/components/SettingsMenu/Items/Open';
+import Open from '../../../../containers/Code/components/SettingsMenu/Items/Open';
 
-import useOutsideClick from '~/hooks/useOutsideClick';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
 
-import getContrastColor from '~/helpers/getContrastColor';
+import getContrastColor from '../../../../helpers/getContrastColor';
 
-import { GeneralScope } from '~/types';
+import { GeneralScope } from '../../../../types';
 
 import CustomizeCode from './Items/CustomizeCode';
 import Export from './Items/Export';

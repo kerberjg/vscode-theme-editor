@@ -1,4 +1,4 @@
-import { CSS } from '~/types';
+import { CSS } from '../types';
 
 const stringifyCss = (obj: CSS): string => {
     const css = Object.keys(obj).reduce((acc: string, className: string) => {

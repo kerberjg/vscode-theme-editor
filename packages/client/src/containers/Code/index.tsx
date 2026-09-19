@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Editor from '~/containers/Code/components/Editor';
+import Editor from '../../containers/Code/components/Editor';
 
 const Code: React.FC = () => {
     return (

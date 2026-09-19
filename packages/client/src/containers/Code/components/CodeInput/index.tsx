@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { useRecoilState } from 'recoil';
 
-import { editCodeState, rawCode } from '~/state/code';
+import { editCodeState, rawCode } from '../../../../state/code';
 
 import css from './styles.module.scss';
 

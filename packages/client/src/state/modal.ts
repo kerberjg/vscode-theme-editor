@@ -1,6 +1,6 @@
 import { atom, atomFamily, selectorFamily } from 'recoil';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
 const modalIds = atom<string[]>({
     key: atomKey('Modal', 'Ids'),

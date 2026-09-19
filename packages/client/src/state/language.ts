@@ -1,8 +1,8 @@
 import { atom, selector } from 'recoil';
 
-import { Languages } from '~/services/textmate';
+import { Languages } from '../services/textmate';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
 export const languageState = atom<keyof typeof Languages>({
     key: atomKey('Language', 'lang'),

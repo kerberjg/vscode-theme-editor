@@ -1,7 +1,7 @@
 import React from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 
-import PanelItem from '~/components/ui/PanelItem';
+import PanelItem from '../../../components/ui/PanelItem';
 
 import css from './styles.module.scss';
 

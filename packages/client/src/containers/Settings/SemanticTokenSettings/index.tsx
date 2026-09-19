@@ -1,16 +1,16 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-// import { editRuleState } from '~/state/rules';
-import { semanticTokenState } from '~/state/semanticTokens';
-import { entitySettingsState } from '~/state/ui';
+// import { editRuleState } from '../../../state/rules';
+import { semanticTokenState } from '../../../state/semanticTokens';
+import { entitySettingsState } from '../../../state/ui';
 
-import PanelSettings from '~/components/ui/PanelSettings';
+import PanelSettings from '../../../components/ui/PanelSettings';
 
-import useDeleteEntity from '~/hooks/useDeleteEntity';
-import useViewEntity from '~/hooks/useViewEntity';
+import useDeleteEntity from '../../../hooks/useDeleteEntity';
+import useViewEntity from '../../../hooks/useViewEntity';
 
-import { FontStyle as FontStyleEnum } from '~/constants';
+import { FontStyle as FontStyleEnum } from '../../../constants';
 
 const SemanticTokenSettings: React.FC = () => {
     const editingEntity = useRecoilValue(entitySettingsState);

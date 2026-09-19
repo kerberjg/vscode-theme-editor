@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 
-import { editCodeState } from '~/state/code';
+import { editCodeState } from '../../../../../state/code';
 
-import SettingsMenuItem from '~/containers/Code/components/SettingsMenu/Item';
+import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
 
 const CustomizeCode: React.FC = () => {
     const [isEditing, setEditCode] = useRecoilState(editCodeState);

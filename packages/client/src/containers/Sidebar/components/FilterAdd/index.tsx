@@ -3,14 +3,14 @@ import AddIcon from '@material-ui/icons/Add';
 import { useRecoilState } from 'recoil';
 import { useRecoilValue } from 'recoil';
 
-import mode from '~/state/mode';
-import { filter } from '~/state/sidebar';
+import mode from '../../../../state/mode';
+import { filter } from '../../../../state/sidebar';
 
-import Button from '~/components/ui/Button';
+import Button from '../../../../components/ui/Button';
 
-import useAddEntity from '~/hooks/useAddEntity';
+import useAddEntity from '../../../../hooks/useAddEntity';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../../../../constants';
 
 import css from './styles.module.scss';
 
