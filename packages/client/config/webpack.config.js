@@ -11,7 +11,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
@@ -49,8 +48,6 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-const sassRegex = /\.(scss|sass)$/;
-const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -69,67 +66,6 @@ module.exports = function (webpackEnv) {
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
   // Get environment variables to inject into our app.
   const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
-
-  // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
-    const loaders = [
-      isEnvDevelopment && require.resolve('style-loader'),
-      isEnvProduction && {
-        loader: MiniCssExtractPlugin.loader,
-        // css is located in `static/css`, use '../../' to locate index.html folder
-        // in production `paths.publicUrlOrPath` can be a relative path
-        options: paths.publicUrlOrPath.startsWith('.')
-          ? { publicPath: '../../' }
-          : {},
-      },
-      {
-        loader: require.resolve('css-loader'),
-        options: cssOptions,
-      },
-      {
-        // Options for PostCSS as we reference these options twice
-        // Adds vendor prefixing based on your specified browser support in
-        // package.json
-        loader: require.resolve('postcss-loader'),
-        options: {
-          // Necessary for external CSS imports to work
-          // https://github.com/facebook/create-react-app/issues/2677
-          ident: 'postcss',
-          plugins: () => [
-            require('postcss-flexbugs-fixes'),
-            require('postcss-preset-env')({
-              autoprefixer: {
-                flexbox: 'no-2009',
-              },
-              stage: 3,
-            }),
-            // Adds PostCSS Normalize as the reset css with default options,
-            // so that it honors browserslist config in package.json
-            // which in turn let's users customize the target behavior as per their needs.
-            postcssNormalize(),
-          ],
-          sourceMap: isEnvProduction && shouldUseSourceMap,
-        },
-      },
-    ].filter(Boolean);
-    if (preProcessor) {
-      loaders.push(
-        {
-          loader: require.resolve('resolve-url-loader'),
-          options: {
-            sourceMap: isEnvProduction && shouldUseSourceMap,
-          },
-        },
-        {
-          loader: require.resolve(preProcessor),
-          options: {
-            sourceMap: true,
-          },
-        }
-      );
-    }
-    return loaders;
-  };
 
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
@@ -363,41 +299,31 @@ module.exports = function (webpackEnv) {
         //     inputSourceMap: shouldUseSourceMap,
         //   },
         // },
-        // "postcss" loader applies autoprefixer to our CSS.
-        // "css" loader resolves paths in CSS and adds assets as dependencies.
-        // "style" loader turns CSS into JS modules that inject <style> tags.
-        // In production, we use MiniCSSExtractPlugin to extract that CSS
-        // to a file, but in development "style" loader enables hot editing
-        // of CSS.
-        // By default we support CSS Modules with the extension .module.css
-        {
-          test: cssRegex,
-          exclude: cssModuleRegex,
-          use: getStyleLoaders({
-            importLoaders: 1,
-            sourceMap: isEnvProduction && shouldUseSourceMap,
-          }),
-          // Don't consider CSS imports dead code even if the
-          // containing package claims to have no side effects.
-          // Remove this when webpack adds a warning or an error for this.
-          // See https://github.com/webpack/webpack/issues/6571
-          sideEffects: true,
-        },
         // "file" loader makes sure those assets get served by WebpackDevServer.
         // When you `import` an asset, you get its (virtual) filename.
         // In production, they would get copied to the `build` folder.
         // This loader doesn't use a "test" so it will catch all modules
         // that fall through the other loaders.
+        // {
+        //   loader: require.resolve('file-loader'),
+        //   // Exclude `js` files to keep "css" loader working as it injects
+        //   // its runtime that would otherwise be processed through "file" loader.
+        //   // Also exclude `html` and `json` extensions so they get processed
+        //   // by webpacks internal loaders.
+        //   exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+        //   options: {
+        //     name: 'static/media/[name].[hash:8].[ext]',
+        //   },
+        // },
         {
-          loader: require.resolve('file-loader'),
-          // Exclude `js` files to keep "css" loader working as it injects
-          // its runtime that would otherwise be processed through "file" loader.
-          // Also exclude `html` and `json` extensions so they get processed
-          // by webpacks internal loaders.
-          exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-          options: {
-            name: 'static/media/[name].[hash:8].[ext]',
-          },
+          test: /\.s[ac]ss$/i,
+          // Lets webpack handle the generated CSS using its built-in CSS support,
+          // `css/auto` also enables CSS modules for `*.module.scss` files
+          type: "css/auto",
+          use: [
+            // Compiles Sass to CSS
+            "sass-loader",
+          ],
         },
         // ** STOP ** Are you adding a new loader?
         // Make sure to add the new loader(s) before the "file" loader.
@@ -461,13 +387,6 @@ module.exports = function (webpackEnv) {
       // See https://github.com/facebook/create-react-app/issues/186
       isEnvDevelopment &&
       new WatchMissingNodeModulesPlugin(paths.appNodeModules),
-      isEnvProduction &&
-      new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // both options are optional
-        filename: 'static/css/[name].[contenthash:8].css',
-        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-      }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
       //   output file so that tools can pick it up without having to parse
