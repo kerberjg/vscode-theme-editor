@@ -4,3 +4,4 @@
 **/config-overrides.js
 types/**
 *.d.ts
+eslint.config.js

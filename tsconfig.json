@@ -27,6 +27,7 @@
     },
     "exclude": [
         "node_modules",
-        "packages/**/*.js"
+        "packages/**/*.js",
+        "**/eslint.config.js"
     ]
 }

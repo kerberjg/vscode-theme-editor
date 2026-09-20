@@ -2,5 +2,5 @@ build
 config
 scripts
 node_modules
-.eslintrc.js
+eslint.config.js
 *.d.ts
