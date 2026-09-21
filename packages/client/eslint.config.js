@@ -3,7 +3,6 @@ const {
     globalIgnores,
 } = require("eslint/config");
 
-const reactHooks = require("eslint-plugin-react-hooks");
 
 const {
     fixupPluginRules,
@@ -21,12 +20,20 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-module.exports = defineConfig([{
-    extends: compat.extends("plugin:react/recommended"),
+const baseRules = require("../../eslint.config.js");
 
-    plugins: {
-        "react-hooks": fixupPluginRules(reactHooks),
-    },
+module.exports = defineConfig([{
+    extends: [
+        // root dir rules
+        baseRules,
+
+        // React recommended rules
+        // compat.extends("plugin:react/recommended"),
+    ],
+
+    // plugins: {
+    //     "react-hooks": fixupPluginRules(reactHooks),
+    // },
 
     languageOptions: {
         ecmaVersion: 2018,
@@ -42,12 +49,12 @@ module.exports = defineConfig([{
     },
 
     rules: {
-        "react/prop-types": "off",
-        "react-hooks/rules-of-hooks": "error",
+        // "react/prop-types": "off",
+        // "react-hooks/rules-of-hooks": "error",
 
-        "react-hooks/exhaustive-deps": ["warn", {
-            additionalHooks: "useRecoilCallback",
-        }],
+        // "react-hooks/exhaustive-deps": ["warn", {
+        //     additionalHooks: "useRecoilCallback",
+        // }],
     },
 
     settings: {

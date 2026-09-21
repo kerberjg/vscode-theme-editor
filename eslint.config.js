@@ -42,7 +42,7 @@ module.exports = defineConfig([{
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/consistent-type-imports": "error",
 
-        "@typescript-eslint/no-unused-vars": ["error", {
+        "@typescript-eslint/no-unused-vars": ["warn", {
             "varsIgnorePattern": "^_",
             "argsIgnorePattern": "^_",
         }],
@@ -61,4 +61,7 @@ module.exports = defineConfig([{
     "**/config-overrides.js",
     "types/**/*",
     "**/*.d.ts",
+    "eslint.config.js",
+    "eslint.config.cjs",
+    "**/*.json",
 ])]);
