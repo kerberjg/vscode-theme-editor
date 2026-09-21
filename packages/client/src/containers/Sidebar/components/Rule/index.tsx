@@ -12,7 +12,7 @@ import useViewEntity from '../../../../hooks/useViewEntity';
 // import useViewRule from '../../../../hooks/useViewRule';
 import getExistingScopes from '../../../../helpers/getExistingScopes';
 
-import { Rule as RuleType } from '../../../../types';
+import type { Rule as RuleType } from '../../../../types';
 
 const Rule: React.FC<RuleType> = props => {
     const { id, name, settings } = props;

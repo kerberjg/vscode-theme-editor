@@ -1,4 +1,4 @@
-import { Theme } from './theme';
+import type { Theme } from './theme';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isTheme = (obj: any): obj is Theme => {

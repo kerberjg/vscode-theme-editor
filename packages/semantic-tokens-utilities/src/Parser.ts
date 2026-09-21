@@ -1,12 +1,13 @@
-import { CodeDocument, Parser } from '@kerberjg-vscode-editor/shared';
+import type { Parser } from '@kerberjg-vscode-editor/shared';
+import { CodeDocument } from '@kerberjg-vscode-editor/shared';
 import ts from 'typescript/lib/tsserverlibrary';
-import { TokenEncodingConsts } from 'typescript-vscode-sh-plugin/lib/constants';
+import { TokenEncodingConsts } from './constants/tokens';
 import initPlugin from 'typescript-vscode-sh-plugin';
 
 import createTypeScriptService from './TypeScriptService';
 
 import { tokenTypes, tokenModifiers } from './constants/tokens';
-import { SemanticToken, Language } from './types';
+import type { SemanticToken, Language } from './types';
 
 export interface Input {
     code: string;
@@ -24,8 +25,6 @@ const _createTypeScript = ({
 
     const textmateService = ts.createLanguageService(host);
     return {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
         service: initPlugin({ typescript: ts }).decorate(textmateService),
         host,
     };
@@ -41,7 +40,7 @@ const _getTokenTypeIndex = (classification: number): number | undefined => {
 const _getTokenModifierSet = (classification: number): number =>
     classification & TokenEncodingConsts.modifierMask;
 
-const Parser: Parser<SemanticToken> = ({ code, language }: Input) => {
+const parser: Parser<SemanticToken> = ({ code, language }: Input) => {
     const codeDocument = new CodeDocument({ code });
 
     const { service, host } = _createTypeScript({ code, language });
@@ -86,4 +85,4 @@ const Parser: Parser<SemanticToken> = ({ code, language }: Input) => {
 type SemanticTokensParserResult = ReturnType<Parser<SemanticToken>>;
 export { SemanticTokensParserResult };
 
-export default Parser;
+export default parser;

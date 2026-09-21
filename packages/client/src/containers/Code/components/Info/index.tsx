@@ -24,7 +24,7 @@ import { EntityType } from '../../../../constants';
 
 import { atomKey, selectorKey } from '../../../../helpers/state';
 
-import { SemanticToken } from '../../../../types';
+import type { SemanticToken } from '../../../../types';
 
 import css from './styles.module.scss';
 

@@ -1,4 +1,4 @@
-import { TextMateParserResult } from '@kerberjg-vscode-editor/textmate-utilities';
+import type { TextMateParserResult } from '@kerberjg-vscode-editor/textmate-utilities';
 import { atom, selector } from 'recoil';
 
 import storage from '../services/storage';

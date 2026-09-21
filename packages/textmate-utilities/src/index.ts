@@ -1,8 +1,10 @@
 import initialize from './Initialize';
 import match from './Matcher';
-import { TextMateParserResult, TextMateScopesParser } from './Parser';
+import { TextMateScopesParser } from './Parser';
+import type { TextMateParserResult } from './Parser';
 
-export { TextMateParserResult, TextMateScopesParser };
+export type { TextMateParserResult };
+export { TextMateScopesParser };
 export { initialize };
 export { match };
 export type * from './types';

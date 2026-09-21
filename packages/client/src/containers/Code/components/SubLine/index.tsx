@@ -1,7 +1,9 @@
 import React from 'react';
+import type {
+    SemanticToken as ExternalSemanticToken
+} from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import {
-    createTokenString,
-    SemanticToken as ExternalSemanticToken,
+    createTokenString
 } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import cx from 'classnames';
 import { selectorFamily, useRecoilValue } from 'recoil';
@@ -14,7 +16,7 @@ import { EntityType, FontStyle } from '../../../../constants';
 
 import getContrastColor from '../../../../helpers/getContrastColor';
 
-import { GeneralScope, Rule, SemanticToken } from '../../../../types';
+import type { GeneralScope, Rule, SemanticToken } from '../../../../types';
 
 import css from './styles.module.scss';
 

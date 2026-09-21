@@ -1,4 +1,4 @@
-import { Rule } from '../types';
+import type { Rule } from '../types';
 
 const getDefinedScopes = (rules: Rule[]): string[] => {
     let scopes: string[] = [];

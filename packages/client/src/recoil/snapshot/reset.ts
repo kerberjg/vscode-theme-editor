@@ -1,4 +1,4 @@
-import { MutableSnapshot } from 'recoil';
+import type { MutableSnapshot } from 'recoil';
 
 import { generalScopeState } from '../../state/generalScopes';
 import { ruleIds, ruleState } from '../../state/rules';

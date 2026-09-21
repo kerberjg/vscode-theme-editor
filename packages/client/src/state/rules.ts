@@ -2,7 +2,7 @@ import { EntityType } from '../constants';
 
 import factory from '../helpers/tokenStateFactory';
 
-import { Rule } from '../types';
+import type { Rule } from '../types';
 
 const {
     TREE_ID: RULES_STATE_ID,

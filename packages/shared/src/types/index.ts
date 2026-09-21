@@ -1,4 +1,4 @@
-import CodeDocument from '../helpers/CodeDocument';
+import type CodeDocument from '../helpers/CodeDocument';
 
 export interface Position {
     line: number;

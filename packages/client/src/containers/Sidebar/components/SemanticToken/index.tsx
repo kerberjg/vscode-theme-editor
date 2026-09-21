@@ -9,7 +9,7 @@ import useViewEntity from '../../../../hooks/useViewEntity';
 
 import { EntityType } from '../../../../constants';
 
-import { SemanticToken as SemanticTokenType } from '../../../../types';
+import type { SemanticToken as SemanticTokenType } from '../../../../types';
 
 const SemanticToken: React.FC<SemanticTokenType> = props => {
     const { id, settings, scope } = props;

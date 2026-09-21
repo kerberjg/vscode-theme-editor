@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import parser from '../Parser';
-import { Language } from '../types';
+import type { Language } from '../types';
 
 const json = obj => JSON.stringify(obj);
 

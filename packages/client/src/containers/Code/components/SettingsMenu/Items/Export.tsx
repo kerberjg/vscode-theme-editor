@@ -8,8 +8,8 @@ import { themeStyle } from '../../../../../state/theme';
 
 import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
 
-import { GeneralScope, Rule, SemanticToken } from '../../../../../types';
-import { SemanticTokenRules, TextMateRule, Theme } from '../../../../../types/theme';
+import type { GeneralScope, Rule, SemanticToken } from '../../../../../types';
+import type { SemanticTokenRules, TextMateRule, Theme } from '../../../../../types/theme';
 
 interface Options {
     semanticTokens: SemanticToken[];

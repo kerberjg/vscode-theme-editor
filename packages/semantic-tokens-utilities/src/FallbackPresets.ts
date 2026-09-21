@@ -1,4 +1,4 @@
-import { FallbackRegister } from './types';
+import type { FallbackRegister } from './types';
 
 export const vscode = (register: FallbackRegister): void => {
     register('namespace', ['entity.name.namespace']);

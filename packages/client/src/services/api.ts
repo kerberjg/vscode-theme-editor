@@ -1,4 +1,4 @@
-import { SemanticTokensParserResult } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
+import type { SemanticTokensParserResult } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 import { BACKEND_URL } from '../constants';
 
@@ -73,7 +73,7 @@ class APIService {
 
 const api = new APIService();
 
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+ 
 
 const API = {
     semanticTokensState: (body: { code: string; language: 'tsx' | 'ts' }) =>
@@ -84,5 +84,5 @@ const API = {
     ping: () => api.get<boolean>('/ping'),
 };
 
-/* eslint-enable @typescript-eslint/explicit-function-return-type */
+ 
 export default API;

@@ -8,7 +8,7 @@ import generalScopesDefault from '../helpers/generalScopesDefault';
 import { selectorKey } from '../helpers/state';
 import factory from '../helpers/tokenStateFactory';
 
-import { GeneralScope } from '../types';
+import type { GeneralScope } from '../types';
 
 const getScopeDefault = (scope: string, style: 'light' | 'dark'): { id: string; color: string } => {
     const _scope = generalScopesDefault[scope];

@@ -13,8 +13,8 @@ interface Props {
 
 const SidebarItem: React.FC<Props> = ({
     isActive,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onClick = (): void => {},
+
+    onClick = (): void => { },
     title,
     color,
     showWarning = false,

@@ -1,7 +1,7 @@
 import path from 'path';
 import ts from 'typescript/lib/tsserverlibrary';
 import { WORKING_FILENAME } from './constants';
-import { Input } from './Parser';
+import type { Input } from './Parser';
 
 const compilerOptions: ts.CompilerOptions = {
     allowNonTsExtensions: true,

@@ -1,8 +1,9 @@
 import createToken from './CreateToken';
 import createTokenString from './CreateTokenString';
-import parser, { SemanticTokensParserResult } from './Parser';
+import parser from './Parser';
+import type { SemanticTokensParserResult } from './Parser';
 import * as matcher from './Matcher';
-import { SemanticToken, Token } from './types';
+import type { SemanticToken, Token } from './types';
 import * as Presets from './FallbackPresets';
 import initialize from './Initialize';
 
@@ -14,5 +15,5 @@ export { parser };
 export { matcher };
 
 // types
-export { SemanticToken, Token };
-export { SemanticTokensParserResult };
+export type { SemanticToken, Token };
+export type { SemanticTokensParserResult };
