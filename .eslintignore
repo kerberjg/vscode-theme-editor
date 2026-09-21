@@ -1,7 +1,0 @@
-**/dist/**
-**/build/**
-**/node_modules/**
-**/config-overrides.js
-types/**
-*.d.ts
-eslint.config.js
