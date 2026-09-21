@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 interface Props {
     children: React.ReactNode;

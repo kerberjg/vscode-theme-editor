@@ -6,7 +6,7 @@ import cx from 'classnames';
 
 import { FontStyle as FontStyleEnum } from '../../../../constants';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 const TYPE_MAP = {
     [FontStyleEnum.Bold]: BoldIcon,

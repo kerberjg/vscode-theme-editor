@@ -7,7 +7,7 @@ import { editCodeState } from '../../../../state/code';
 import CodeInput from '../../../../containers/Code/components/CodeInput';
 import CodeView from '../../../../containers/Code/components/CodeView';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 const Editor: React.FC = () => {
     const isEditing = useRecoilValue(editCodeState);

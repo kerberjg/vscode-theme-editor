@@ -253,12 +253,24 @@ module.exports = function (webpackEnv) {
         // },
         {
           test: /\.s[ac]ss$/i,
-          // Lets webpack handle the generated CSS using its built-in CSS support,
-          // `css/auto` also enables CSS modules for `*.module.scss` files
-          type: "css/auto",
           use: [
-            // Compiles Sass to CSS
-            "sass-loader",
+            // mode !== 'production' ? 'style-loader' : miniCssExtractPlugin.loader,
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                sassOptions: {
+                  outputStyle: 'compressed',
+                }
+              },
+            },
           ],
         },
         // ** STOP ** Are you adding a new loader?

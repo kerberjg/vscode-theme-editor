@@ -26,7 +26,7 @@ import { atomKey, selectorKey } from '../../../../helpers/state';
 
 import { SemanticToken } from '../../../../types';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 import { activateRuleByScope } from '../../../../selectors/activateRule';
 

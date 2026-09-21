@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 const PanelItem: React.FC = ({ children }) => {
     return <div className={css.item}>{children}</div>;
