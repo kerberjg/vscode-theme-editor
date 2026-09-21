@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 
 import { editCodeState, rawCode } from '../../../../state/code';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 const CodeInput: React.FC = () => {
     const [_rawCode, setRawCode] = useRecoilState(rawCode);

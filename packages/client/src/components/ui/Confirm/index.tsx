@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../../../components/ui/Button';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 interface Props {
     onConfirm: () => void;

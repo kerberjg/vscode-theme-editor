@@ -13,7 +13,7 @@ import { FontStyle as FontStyleEnum } from '../../../constants';
 
 import { Rule } from '../../../types';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 interface Props {
     onAddScope?: (scope: string) => void;

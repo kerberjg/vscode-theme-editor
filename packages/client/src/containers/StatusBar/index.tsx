@@ -12,7 +12,7 @@ import ThemeStyleSwitcher from '../../components/ThemeStyleSwitcher';
 
 import { Languages } from '../../services/textmate';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 const StatusBar: React.FC = () => {
     const [languageOpen, openLanguageSwitcher] = useRecoilState(getModalState('language'));

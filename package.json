@@ -23,7 +23,6 @@
         "@babel/preset-flow": "^8.0.1",
         "@babel/preset-react": "^8.0.1",
         "@babel/preset-typescript": "^8.0.1",
-        "@dr.pogodin/babel-plugin-react-css-modules": "^7.1.0",
         "@eslint/compat": "^2.1.1",
         "@eslint/eslintrc": "^3.3.7",
         "@eslint/js": "10.0.1",

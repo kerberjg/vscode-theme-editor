@@ -19,7 +19,7 @@ import useViewEntity from '../../../../hooks/useViewEntity';
 
 import { selectorKey } from '../../../../helpers/state';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 export const sublineSelected = atom<string>({
     key: 'selectedSubline',

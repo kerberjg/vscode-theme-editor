@@ -19,9 +19,9 @@ import storage from './services/storage';
 
 import { atomKey } from './helpers/state';
 
-import { GeneralScope, Rule, SemanticToken } from './types';
+import type { GeneralScope, Rule, SemanticToken } from './types';
 
-import * as css from './App.module.scss';
+import css from './App.module.scss';
 
 const ONIGASM_URL = `${process.env.PUBLIC_URL}/onigasm.wasm`;
 

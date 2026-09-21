@@ -3,7 +3,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import PanelItem from '../../../components/ui/PanelItem';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 interface Props {
     onClose: () => void;

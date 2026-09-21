@@ -16,7 +16,7 @@ import getContrastColor from '../../../../helpers/getContrastColor';
 
 import { GeneralScope, Rule, SemanticToken } from '../../../../types';
 
-import * as css from './styles.module.scss';
+import css from './styles.module.scss';
 
 export type SubLineCallback = (args: {
     textmateScopes: string[];
