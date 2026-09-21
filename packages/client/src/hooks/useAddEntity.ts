@@ -10,7 +10,7 @@ import { EntityType } from '../constants';
 import createRule from '../model/rule';
 import createSemanticToken from '../model/semanticToken';
 
-import { Rule, SemanticToken } from '../types';
+import type { Rule, SemanticToken } from '../types';
 
 const useAddEntity = () => {
     const addEntity = useRecoilCallback(

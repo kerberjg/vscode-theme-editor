@@ -11,7 +11,7 @@ import useOutsideClick from '../../../../hooks/useOutsideClick';
 
 import getContrastColor from '../../../../helpers/getContrastColor';
 
-import { GeneralScope } from '../../../../types';
+import type { GeneralScope } from '../../../../types';
 
 import CustomizeCode from './Items/CustomizeCode';
 import Export from './Items/Export';

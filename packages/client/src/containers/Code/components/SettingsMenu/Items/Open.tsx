@@ -1,4 +1,5 @@
-import React, { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
+import React from 'react';
 import { useRecoilCallback } from 'recoil';
 
 import { generalScopeState } from '../../../../../state/generalScopes';
@@ -11,7 +12,7 @@ import generalScopesDefault from '../../../../../helpers/generalScopesDefault';
 
 import createRule from '../../../../../model/rule';
 
-import { Rule } from '../../../../../types';
+import type { Rule } from '../../../../../types';
 import isTheme from '../../../../../types/theme.guard';
 
 import resetState from '../../../../../recoil/snapshot/reset';

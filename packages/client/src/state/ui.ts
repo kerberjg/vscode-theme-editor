@@ -4,7 +4,7 @@ import mode from '../state/mode';
 
 import { atomKey, selectorKey } from '../helpers/state';
 
-import { Base } from '../types';
+import type { Base } from '../types';
 
 const _entitySettingsState = atom<Base | undefined>({
     key: atomKey('Settings', 'Entity'),

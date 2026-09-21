@@ -1,4 +1,4 @@
-import { StorageManager } from '../types/storage';
+import type { StorageManager } from '../types/storage';
 
 class StorageService implements StorageManager {
     public get<T>(key: string): Maybe<T> {

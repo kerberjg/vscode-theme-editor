@@ -3,7 +3,7 @@ import { uniqueId } from 'lodash';
 
 import { EntityType } from '../constants';
 
-import { SemanticToken } from '../types';
+import type { SemanticToken } from '../types';
 
 interface Options {
     existingIds: string[];

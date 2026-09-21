@@ -12,7 +12,8 @@ import { semanticTokens, semanticTokensState } from '../../../../state/semanticT
 
 import { infoState } from '../../../../containers/Code/components/Info';
 import Line from '../../../../containers/Code/components/Line';
-import SubLine, { SubLineCallback } from '../../../../containers/Code/components/SubLine';
+import type { SubLineCallback } from '../../../../containers/Code/components/SubLine';
+import SubLine from '../../../../containers/Code/components/SubLine';
 
 // import useViewRule from '../../../../hooks/useViewRule';
 import useViewEntity from '../../../../hooks/useViewEntity';

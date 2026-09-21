@@ -1,4 +1,4 @@
-import { Position } from '@kerberjg-vscode-editor/shared';
+import type { Position } from '@kerberjg-vscode-editor/shared';
 
 export interface TokenFallback {
     token: Token;

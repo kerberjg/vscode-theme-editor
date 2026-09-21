@@ -7,7 +7,7 @@ import { entitySettingsState } from '../state/ui';
 
 import { isRule, isSemanticToken } from '../helpers/typeGuards';
 
-import { Entity } from '../types';
+import type { Entity } from '../types';
 
 type ReturnType = (input: Entity) => void;
 

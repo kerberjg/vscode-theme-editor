@@ -7,7 +7,7 @@ import SidebarItem from '../../../../components/ui/SidebarItem';
 
 import useViewEntity from '../../../../hooks/useViewEntity';
 
-import { GeneralScope as GeneralScopeType } from '../../../../types';
+import type { GeneralScope as GeneralScopeType } from '../../../../types';
 
 const GeneralScope: React.FC<GeneralScopeType> = props => {
     const { id, settings } = props;

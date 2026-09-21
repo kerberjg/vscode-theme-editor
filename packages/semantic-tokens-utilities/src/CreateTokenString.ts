@@ -1,4 +1,4 @@
-import { Token } from './types';
+import type { Token } from './types';
 
 const createTokenString = ({ type, modifiers, language }: Token): string =>
     `${[type, ...[...modifiers].sort()].join('.')}${language !== undefined ? ':' + language : ''}`;

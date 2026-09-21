@@ -2,7 +2,7 @@ import { useRecoilCallback } from 'recoil';
 
 import { entitySettingsState } from '../state/ui';
 
-import { Base } from '../types';
+import type { Base } from '../types';
 
 const useViewEntity = (): (<T extends Base>(input?: T) => void) => {
     const viewEntity = useRecoilCallback(

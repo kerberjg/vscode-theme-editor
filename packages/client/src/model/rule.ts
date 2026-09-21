@@ -2,7 +2,7 @@ import { uniqueId } from 'lodash';
 
 import { EntityType } from '../constants';
 
-import { Rule } from '../types';
+import type { Rule } from '../types';
 
 const createName = (input?: Partial<Rule>): string => {
     if (!input) {

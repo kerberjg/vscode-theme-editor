@@ -3,7 +3,7 @@ import {
     CLASSIFIER_MODIFIER_SEPARATOR,
     TOKEN_CLASSIFIER_LANGUAGE_SEPARATOR,
 } from './constants';
-import { Token } from './types';
+import type { Token } from './types';
 
 const createToken = (queryString: string): Token => {
     if (!queryString.match(SELECTOR_PATTERN)) {

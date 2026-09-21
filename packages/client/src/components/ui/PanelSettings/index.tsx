@@ -11,7 +11,7 @@ import Panel from '../../../components/ui/Panel';
 
 import { FontStyle as FontStyleEnum } from '../../../constants';
 
-import { Rule } from '../../../types';
+import type { Rule } from '../../../types';
 
 import css from './styles.module.scss';
 
