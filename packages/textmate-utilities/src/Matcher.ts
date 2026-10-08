@@ -1,4 +1,4 @@
-import { TextMateRule } from '~/types';
+import type { TextMateRule } from './types';
 
 interface Match {
     query: string;

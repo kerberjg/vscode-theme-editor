@@ -1,11 +1,11 @@
-import { MutableSnapshot } from 'recoil';
+import type { MutableSnapshot } from 'recoil';
 
-import { generalScopeState } from '~/state/generalScopes';
-import { ruleIds, ruleState } from '~/state/rules';
-import { semanticTokenIds, semanticTokenState } from '~/state/semanticTokens';
-import { themeStyle } from '~/state/theme';
+import { generalScopeState } from '../../state/generalScopes';
+import { ruleIds, ruleState } from '../../state/rules';
+import { semanticTokenIds, semanticTokenState } from '../../state/semanticTokens';
+import { themeStyle } from '../../state/theme';
 
-import { GENERAL_SCOPES } from '~/constants';
+import { GENERAL_SCOPES } from '../../constants';
 
 const resetState = async (snapshot: MutableSnapshot): Promise<void> => {
     snapshot.reset(themeStyle);

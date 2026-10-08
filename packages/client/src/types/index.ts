@@ -1,6 +1,6 @@
-import SemanticToken from '~/containers/Sidebar/components/SemanticToken';
+import type SemanticToken from '../containers/Sidebar/components/SemanticToken';
 
-import { EntityType, FontStyle } from '~/constants';
+import type { EntityType, FontStyle } from '../constants';
 
 export interface Settings {
     foreground: string;

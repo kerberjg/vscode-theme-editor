@@ -1,6 +1,6 @@
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import { GeneralScope, Rule, SemanticToken } from '~/types';
+import type { GeneralScope, Rule, SemanticToken } from '../types';
 
 export function isGeneralScope(input: any): input is GeneralScope {
     return input.__type === EntityType.GeneralScope;

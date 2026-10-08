@@ -1,13 +1,13 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { entitySettingsState } from '~/state/ui';
+import { entitySettingsState } from '../../../../state/ui';
 
-import SidebarItem from '~/components/ui/SidebarItem';
+import SidebarItem from '../../../../components/ui/SidebarItem';
 
-import useViewEntity from '~/hooks/useViewEntity';
+import useViewEntity from '../../../../hooks/useViewEntity';
 
-import { GeneralScope as GeneralScopeType } from '~/types';
+import type { GeneralScope as GeneralScopeType } from '../../../../types';
 
 const GeneralScope: React.FC<GeneralScopeType> = props => {
     const { id, settings } = props;

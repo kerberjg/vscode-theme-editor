@@ -1,17 +1,17 @@
 import React from 'react';
 
-import ColorPicker from '~/containers/Settings/components/ColorPicker';
-import FontStyle from '~/containers/Settings/components/FontStyle';
-import NameInput from '~/containers/Settings/components/NameInput';
-import ScopesList from '~/containers/Settings/components/ScopesList';
-import Swatches from '~/containers/Settings/components/Swatches';
+import ColorPicker from '../../../containers/Settings/components/ColorPicker';
+import FontStyle from '../../../containers/Settings/components/FontStyle';
+import NameInput from '../../../containers/Settings/components/NameInput';
+import ScopesList from '../../../containers/Settings/components/ScopesList';
+import Swatches from '../../../containers/Settings/components/Swatches';
 
-import Button from '~/components/ui/Button';
-import Panel from '~/components/ui/Panel';
+import Button from '../../../components/ui/Button';
+import Panel from '../../../components/ui/Panel';
 
-import { FontStyle as FontStyleEnum } from '~/constants';
+import { FontStyle as FontStyleEnum } from '../../../constants';
 
-import { Rule } from '~/types';
+import type { Rule } from '../../../types';
 
 import css from './styles.module.scss';
 

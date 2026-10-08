@@ -1,6 +1,8 @@
-import { CodeDocument, Supplier } from '@kerberjg-vscode-editor/shared';
-import { IGrammar, Registry } from 'monaco-textmate';
-import { TextMateNode } from '~/types';
+import type { Supplier } from '@kerberjg-vscode-editor/shared';
+import { CodeDocument } from '@kerberjg-vscode-editor/shared';
+import type { IGrammar } from 'monaco-textmate';
+import { Registry } from 'monaco-textmate';
+import type { TextMateNode } from './types';
 
 export interface Options<LanguageScopeNames extends string> {
     filePaths: {
@@ -113,5 +115,5 @@ class TextMateScopesParser<LSN extends string> implements Supplier<TextMateNode>
     }
 }
 
-export { TextMateParserResult };
+export type { TextMateParserResult };
 export { TextMateScopesParser };

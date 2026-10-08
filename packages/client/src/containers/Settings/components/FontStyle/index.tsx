@@ -4,7 +4,7 @@ import ItalicIcon from '@material-ui/icons/FormatItalic';
 import UnderlineIcon from '@material-ui/icons/FormatUnderlined';
 import cx from 'classnames';
 
-import { FontStyle as FontStyleEnum } from '~/constants';
+import { FontStyle as FontStyleEnum } from '../../../../constants';
 
 import css from './styles.module.scss';
 

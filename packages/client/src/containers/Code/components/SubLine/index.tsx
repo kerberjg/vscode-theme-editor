@@ -1,20 +1,22 @@
 import React from 'react';
+import type {
+    SemanticToken as ExternalSemanticToken
+} from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import {
-    createTokenString,
-    SemanticToken as ExternalSemanticToken,
+    createTokenString
 } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import cx from 'classnames';
 import { selectorFamily, useRecoilValue } from 'recoil';
 
-import { generalScopeState } from '~/state/generalScopes';
-import { ruleState } from '~/state/rules';
-import { semanticTokenState } from '~/state/semanticTokens';
+import { generalScopeState } from '../../../../state/generalScopes';
+import { ruleState } from '../../../../state/rules';
+import { semanticTokenState } from '../../../../state/semanticTokens';
 
-import { EntityType, FontStyle } from '~/constants';
+import { EntityType, FontStyle } from '../../../../constants';
 
-import getContrastColor from '~/helpers/getContrastColor';
+import getContrastColor from '../../../../helpers/getContrastColor';
 
-import { GeneralScope, Rule, SemanticToken } from '~/types';
+import type { GeneralScope, Rule, SemanticToken } from '../../../../types';
 
 import css from './styles.module.scss';
 
@@ -90,8 +92,8 @@ const SubLine: React.FC<Props> = ({
             : 'none',
         ...(selected
             ? {
-                  backgroundColor: `${getContrastColor(editorBackground.settings.foreground)}20`,
-              }
+                backgroundColor: `${getContrastColor(editorBackground.settings.foreground)}20`,
+            }
             : {}),
     };
 
@@ -101,19 +103,19 @@ const SubLine: React.FC<Props> = ({
             style={style}
             {...(!empty
                 ? {
-                      onClick: (): void =>
-                          onClick({
-                              textmateScopes: scopes,
-                              entity,
-                              id,
-                              semanticToken: semanticTokenStr,
-                          }),
-                      onMouseEnter: (): void =>
-                          onHover({
-                              textmateScopes: scopes,
-                              semanticToken: semanticTokenStr,
-                          }),
-                  }
+                    onClick: (): void =>
+                        onClick({
+                            textmateScopes: scopes,
+                            entity,
+                            id,
+                            semanticToken: semanticTokenStr,
+                        }),
+                    onMouseEnter: (): void =>
+                        onHover({
+                            textmateScopes: scopes,
+                            semanticToken: semanticTokenStr,
+                        }),
+                }
                 : {})}
         >
             {children || ' '}

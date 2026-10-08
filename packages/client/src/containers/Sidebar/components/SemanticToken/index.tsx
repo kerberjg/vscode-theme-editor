@@ -1,15 +1,15 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { entitySettingsState } from '~/state/ui';
+import { entitySettingsState } from '../../../../state/ui';
 
-import SidebarItem from '~/components/ui/SidebarItem';
+import SidebarItem from '../../../../components/ui/SidebarItem';
 
-import useViewEntity from '~/hooks/useViewEntity';
+import useViewEntity from '../../../../hooks/useViewEntity';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../../../../constants';
 
-import { SemanticToken as SemanticTokenType } from '~/types';
+import type { SemanticToken as SemanticTokenType } from '../../../../types';
 
 const SemanticToken: React.FC<SemanticTokenType> = props => {
     const { id, settings, scope } = props;

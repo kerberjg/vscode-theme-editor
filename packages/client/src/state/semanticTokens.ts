@@ -1,17 +1,17 @@
-import { SemanticToken as ExternalSemanticToken } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
+import type { SemanticToken as ExternalSemanticToken } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import { groupBy } from 'lodash';
 import { atom, selector, useRecoilCallback, useRecoilValue } from 'recoil';
 
-import { rawCode } from '~/state/code';
+import { rawCode } from '../state/code';
 
-import API from '~/services/api';
+import API from '../services/api';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import { atomKey, selectorKey } from '~/helpers/state';
-import factory from '~/helpers/tokenStateFactory';
+import { atomKey, selectorKey } from '../helpers/state';
+import factory from '../helpers/tokenStateFactory';
 
-import { SemanticToken } from '~/types';
+import type { SemanticToken } from '../types';
 
 export enum States {
     Active,

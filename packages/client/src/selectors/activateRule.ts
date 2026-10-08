@@ -1,13 +1,12 @@
 import { match } from '@kerberjg-vscode-editor/textmate-utilities';
 import { atom, selector } from 'recoil';
 
-import mode from '~/state/mode';
-import { RULES_STATE_ID, rulesState } from '~/state/rules';
+import mode from '../state/mode';
+import { RULES_STATE_ID, rulesState } from '../state/rules';
 
-import { selectorKey } from '~/helpers/state';
-
-import { atomKey } from './../helpers/state';
-import { entitySettingsState } from './../state/ui';
+import { selectorKey } from '../helpers/state';
+import { atomKey } from '../helpers/state';
+import { entitySettingsState } from '../state/ui';
 
 const activeScope = atom<string>({
     key: atomKey(RULES_STATE_ID, 'ActiveScope'),

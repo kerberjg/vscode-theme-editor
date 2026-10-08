@@ -1,18 +1,18 @@
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { rulesState, ruleState } from '~/state/rules';
-import { entitySettingsState } from '~/state/ui';
+import { rulesState, ruleState } from '../../../state/rules';
+import { entitySettingsState } from '../../../state/ui';
 
-import PanelSettings from '~/components/ui/PanelSettings';
+import PanelSettings from '../../../components/ui/PanelSettings';
 
-import useDeleteEntity from '~/hooks/useDeleteEntity';
-import useViewEntity from '~/hooks/useViewEntity';
+import useDeleteEntity from '../../../hooks/useDeleteEntity';
+import useViewEntity from '../../../hooks/useViewEntity';
 
-// import useViewRule from '~/hooks/useViewRule';
-import { FontStyle as FontStyleEnum } from '~/constants';
+// import useViewRule from '../../../hooks/useViewRule';
+import { FontStyle as FontStyleEnum } from '../../../constants';
 
-import getExistingScopes from '~/helpers/getExistingScopes';
+import getExistingScopes from '../../../helpers/getExistingScopes';
 
 const RuleSettings: React.FC = () => {
     const rules = useRecoilValue(rulesState);

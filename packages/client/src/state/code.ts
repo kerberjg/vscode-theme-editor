@@ -1,16 +1,16 @@
-import { TextMateParserResult } from '@kerberjg-vscode-editor/textmate-utilities';
+import type { TextMateParserResult } from '@kerberjg-vscode-editor/textmate-utilities';
 import { atom, selector } from 'recoil';
 
-import storage from '~/services/storage';
-import textmateService from '~/services/textmate';
+import storage from '../services/storage';
+import textmateService from '../services/textmate';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
 import languageState from './language';
 
 const initCode = `import React from 'react';
-import main from '~/state/main';
-import { getAll } from '~/helpers/getAll';
+import main from '../state/main';
+import { getAll } from '../helpers/getAll';
 import Button from '../../component/Button';
 
 import './style.css';

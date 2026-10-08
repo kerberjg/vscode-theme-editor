@@ -1,4 +1,4 @@
-import { GENERAL_SCOPES } from '~/constants';
+import type { GENERAL_SCOPES } from '../constants';
 
 type Scopes = typeof GENERAL_SCOPES[number];
 

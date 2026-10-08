@@ -1,19 +1,13 @@
-import {
-    atom,
-    atomFamily,
-    DefaultValue,
-    RecoilValueReadOnly,
-    selector,
-    selectorFamily,
-} from 'recoil';
+import { atom, atomFamily, DefaultValue, selector, selectorFamily } from 'recoil';
+import type { RecoilValueReadOnly } from 'recoil';
 
-import storage from '~/services/storage';
+import storage from '../services/storage';
 
-import { EntityType } from '~/constants';
+import type { EntityType } from '../constants';
 
-import { atomKey, selectorKey } from '~/helpers/state';
+import { atomKey, selectorKey } from '../helpers/state';
 
-import { Base } from '~/types';
+import type { Base } from '../types';
 
 interface Options<T extends Base<EntityType>> {
     state: string;
@@ -21,7 +15,7 @@ interface Options<T extends Base<EntityType>> {
     default: T | ((param: any) => RecoilValueReadOnly<T>);
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+ 
 const factory = <T extends Base>(opts: Options<T>) => {
     const { state, default: _default } = opts;
 

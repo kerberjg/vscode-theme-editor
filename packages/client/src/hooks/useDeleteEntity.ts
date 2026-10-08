@@ -1,13 +1,13 @@
 import { useRecoilCallback } from 'recoil';
 
-import mode from '~/state/mode';
-import { ruleState } from '~/state/rules';
-import { semanticTokenState } from '~/state/semanticTokens';
-import { entitySettingsState } from '~/state/ui';
+import mode from '../state/mode';
+import { ruleState } from '../state/rules';
+import { semanticTokenState } from '../state/semanticTokens';
+import { entitySettingsState } from '../state/ui';
 
-import { isRule, isSemanticToken } from '~/helpers/typeGuards';
+import { isRule, isSemanticToken } from '../helpers/typeGuards';
 
-import { Entity } from '~/types';
+import type { Entity } from '../types';
 
 type ReturnType = (input: Entity) => void;
 

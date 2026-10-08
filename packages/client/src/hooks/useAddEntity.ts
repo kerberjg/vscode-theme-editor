@@ -1,16 +1,16 @@
 import { useRecoilCallback } from 'recoil';
 
-import { ruleIds, ruleState } from '~/state/rules';
-import { semanticTokenIds, semanticTokenState } from '~/state/semanticTokens';
+import { ruleIds, ruleState } from '../state/rules';
+import { semanticTokenIds, semanticTokenState } from '../state/semanticTokens';
 
-import { confirm } from '~/services/dialog';
+import { confirm } from '../services/dialog';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import createRule from '~/model/rule';
-import createSemanticToken from '~/model/semanticToken';
+import createRule from '../model/rule';
+import createSemanticToken from '../model/semanticToken';
 
-import { Rule, SemanticToken } from '~/types';
+import type { Rule, SemanticToken } from '../types';
 
 const useAddEntity = () => {
     const addEntity = useRecoilCallback(

@@ -1,5 +1,5 @@
 import { tokenTypes, tokenModifiers } from './constants/tokens';
-import { Token, TokenFallback } from './types';
+import type { Token, TokenFallback } from './types';
 import createToken from './CreateToken';
 
 const _tokenFallbackScopes: TokenFallback[] = [];

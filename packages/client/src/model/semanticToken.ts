@@ -1,9 +1,9 @@
 import { createToken } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 import { uniqueId } from 'lodash';
 
-import { EntityType } from '~/constants';
+import { EntityType } from '../constants';
 
-import { SemanticToken } from '~/types';
+import type { SemanticToken } from '../types';
 
 interface Options {
     existingIds: string[];

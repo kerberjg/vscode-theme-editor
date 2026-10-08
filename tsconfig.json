@@ -19,13 +19,14 @@
         "isolatedModules": false,
         "declaration": true,
         "declarationMap": true,
+        "sourceMap": true,
         "types": [
-            "node",
-            "jest"
+            "node"
         ]
     },
     "exclude": [
         "node_modules",
-        "packages/**/*.js"
+        "packages/**/*.js",
+        "**/eslint.config.js"
     ]
 }

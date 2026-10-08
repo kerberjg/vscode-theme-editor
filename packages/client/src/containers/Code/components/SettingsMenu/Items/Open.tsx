@@ -1,20 +1,21 @@
-import React, { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
+import React from 'react';
 import { useRecoilCallback } from 'recoil';
 
-import { generalScopeState } from '~/state/generalScopes';
-import { ruleIds, ruleState } from '~/state/rules';
+import { generalScopeState } from '../../../../../state/generalScopes';
+import { ruleIds, ruleState } from '../../../../../state/rules';
 
-import SettingsMenuItem from '~/containers/Code/components/SettingsMenu/Item';
-import FontStyle from '~/containers/Settings/components/FontStyle';
+import SettingsMenuItem from '../../../../../containers/Code/components/SettingsMenu/Item';
+import FontStyle from '../../../../../containers/Settings/components/FontStyle';
 
-import generalScopesDefault from '~/helpers/generalScopesDefault';
+import generalScopesDefault from '../../../../../helpers/generalScopesDefault';
 
-import createRule from '~/model/rule';
+import createRule from '../../../../../model/rule';
 
-import { Rule } from '~/types';
-import isTheme from '~/types/theme.guard';
+import type { Rule } from '../../../../../types';
+import isTheme from '../../../../../types/theme.guard';
 
-import resetState from '~/recoil/snapshot/reset';
+import resetState from '../../../../../recoil/snapshot/reset';
 
 const getFileJson = (event: ChangeEvent<HTMLInputElement>): Promise<Record<string, unknown>> => {
     const input = event.target;

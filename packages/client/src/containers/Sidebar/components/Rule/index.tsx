@@ -1,18 +1,18 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { rulesState } from '~/state/rules';
-import { entitySettingsState } from '~/state/ui';
+import { rulesState } from '../../../../state/rules';
+import { entitySettingsState } from '../../../../state/ui';
 
-// import { editRuleState } from '~/state/rules';
-import SidebarItem from '~/components/ui/SidebarItem';
+// import { editRuleState } from '../../../../state/rules';
+import SidebarItem from '../../../../components/ui/SidebarItem';
 
-import useViewEntity from '~/hooks/useViewEntity';
+import useViewEntity from '../../../../hooks/useViewEntity';
 
-// import useViewRule from '~/hooks/useViewRule';
-import getExistingScopes from '~/helpers/getExistingScopes';
+// import useViewRule from '../../../../hooks/useViewRule';
+import getExistingScopes from '../../../../helpers/getExistingScopes';
 
-import { Rule as RuleType } from '~/types';
+import type { Rule as RuleType } from '../../../../types';
 
 const Rule: React.FC<RuleType> = props => {
     const { id, name, settings } = props;
