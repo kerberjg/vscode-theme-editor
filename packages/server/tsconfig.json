@@ -2,8 +2,9 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "rootDir": "./",
-        "module": "nodenext",
+        "module": "esnext",
         "moduleResolution": "nodenext",
+        "target": "esnext",
         "paths": {
             "~/*": [
                 "./src/*"
