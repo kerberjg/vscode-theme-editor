@@ -37,6 +37,6 @@
         "stylelint": "^13.6.1",
         "stylelint-config-prettier": "^8.0.2",
         "stylelint-scss": "^3.18.0",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.3"
     }
 }
