@@ -75,14 +75,20 @@ module.exports = function (webpackEnv) {
       // Add /* filename */ comments to generated require()s in the output.
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
-      // In development, it does not produce real files.
-      filename:
-        (isEnvProduction && 'static/js/[name].[contenthash:8].js') ||
-        'static/js/bundle.js',
+      // // In development, it does not produce real files.
+      // filename:
+      //   (isEnvProduction && 'static/js/[name].[contenthash:8].js') ||
+      //   'static/js/bundle.js',
+      // // There are also additional JS chunk files if you use code splitting.
+      // chunkFilename:
+      //   (isEnvProduction && 'static/js/[name].[contenthash:8].chunk.js') ||
+      //   'static/js/[name].chunk.js',
+
+
+      filename: 'static/js/[name].[contenthash:8].js',
       // There are also additional JS chunk files if you use code splitting.
-      chunkFilename:
-        (isEnvProduction && 'static/js/[name].[contenthash:8].chunk.js') ||
-        'static/js/[name].chunk.js',
+      chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
+
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
       // We inferred the "public path" (such as / or /my-project) from homepage.
@@ -118,7 +124,7 @@ module.exports = function (webpackEnv) {
               ecma: 8,
             },
             compress: {
-              ecma: 5,
+              ecma: 6,
               warnings: false,
               // Disabled because of an issue with Uglify breaking seemingly valid code:
               // https://github.com/facebook/create-react-app/issues/2376
@@ -138,7 +144,7 @@ module.exports = function (webpackEnv) {
             keep_classnames: isEnvProductionProfile,
             keep_fnames: isEnvProductionProfile,
             output: {
-              ecma: 5,
+              ecma: 6,
               comments: false,
               // Turned on because emoji and regex is not minified properly using default
               // https://github.com/facebook/create-react-app/issues/2488
@@ -318,8 +324,9 @@ module.exports = function (webpackEnv) {
       // to restart the development server for webpack to discover it. This plugin
       // makes the discovery automatic so you don't have to restart.
       // See https://github.com/facebook/create-react-app/issues/186
-      isEnvDevelopment &&
-      new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+      // isEnvDevelopment &&
+      // new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
       //   output file so that tools can pick it up without having to parse
