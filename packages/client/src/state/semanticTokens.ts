@@ -94,9 +94,9 @@ const {
     getEntities: semanticTokensState,
     getEntity: semanticTokenState,
     entityIds: semanticTokenIds,
-} = factory({
+} = factory<SemanticToken>({
     state: 'semantic',
-    default: <SemanticToken>{
+    default: {
         id: '',
         scope: '',
         settings: {

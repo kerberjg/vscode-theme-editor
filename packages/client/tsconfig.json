@@ -14,9 +14,14 @@
     },
     "include": [
         "./src",
-        "global.d.ts"
+        "global.d.ts",
     ],
     "exclude": [
         "./src/__tests__"
+    ],
+    "plugins": [
+        {
+            "name": "typescript-plugin-css-modules"
+        }
     ]
 }

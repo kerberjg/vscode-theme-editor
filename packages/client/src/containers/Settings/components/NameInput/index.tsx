@@ -11,8 +11,8 @@ interface Props {
 
 const NameInput: React.FC<Props> = ({
     value: currentValue,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onChange = (): void => {},
+
+    onChange = (): void => { },
     readonly,
 }) => {
     const [editing, setEditing] = React.useState(false);

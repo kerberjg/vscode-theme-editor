@@ -6,6 +6,7 @@
         "@babel/preset-flow"
     ],
     "plugins": [
-        "babel-plugin-transform-barrels"
+        // "babel-plugin-transform-barrels"
+        // "@babel/transform-typescript"
     ]
 }

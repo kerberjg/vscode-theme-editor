@@ -96,6 +96,7 @@ const CodeView: React.FC = () => {
 
     const subLineCallback: SubLineCallback = React.useCallback(
         ({ textmateScopes, semanticToken, id, entity }) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             entity && viewEntity(entity);
             setInfoState({
                 selected: id,

@@ -12,7 +12,7 @@ export enum EntityType {
 
 export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-export const GENERAL_SCOPES = <const>[
+export const GENERAL_SCOPES = [ // <const>[
     'button.background',
     'button.foreground',
     'button.hoverBackground',
@@ -46,7 +46,7 @@ export const GENERAL_SCOPES = <const>[
     'statusBarItem.hoverBackground',
 ];
 
-export const SEMANTIC_HIGHLIGHTING_TEXTMATE_MAP = <const>{
+export const SEMANTIC_HIGHLIGHTING_TEXTMATE_MAP = { // <const>{
     namespace: ['entity.name.namespace', 'entity.name.type.module'],
 
     type: ['entity.name.type'],
