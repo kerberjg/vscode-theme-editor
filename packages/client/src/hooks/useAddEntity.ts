@@ -12,17 +12,29 @@ import createSemanticToken from '../model/semanticToken';
 
 import type { Rule, SemanticToken } from '../types';
 
-const useAddEntity = () => {
-    const addEntity = useRecoilCallback(
-        ({ set, snapshot }) => async <T>({
+type AsyncRecoilCallback<T> = (
+    { set, snapshot }
+) => (args: {
+    input: Partial<T>;
+    filterScope?: boolean;
+    type: EntityType;
+}) => Promise<T | undefined>;
+
+// type RecoilCallback<T> =
+
+function useAddEntity<T>() {
+    const addEntityCallback: AsyncRecoilCallback<T> =
+        ({ set, snapshot }) => async ({
             input,
-            filterScope = false,
+            filterScope, // = false,
             type,
-        }): Promise<T | undefined> => {
+        }) => {
+            filterScope = filterScope ?? false;
+
             let entity;
             if (type === EntityType.Rule) {
                 const existingIds = await snapshot.getPromise(ruleIds);
-                entity = createRule(<Partial<Rule>>input, {
+                entity = createRule(input, {
                     existingIds,
                     filterScope: filterScope,
                 });
@@ -34,7 +46,7 @@ const useAddEntity = () => {
                 const existingIds = await snapshot.getPromise(semanticTokenIds);
                 let entity;
                 try {
-                    entity = createSemanticToken(<Partial<SemanticToken>>input, {
+                    entity = createSemanticToken(input, {
                         existingIds,
                     });
                 } catch (_e) {
@@ -46,9 +58,9 @@ const useAddEntity = () => {
             }
 
             return entity;
-        },
-        [],
-    );
+        };
+
+    const addEntity = useRecoilCallback(addEntityCallback, []);
 
     return addEntity;
 };

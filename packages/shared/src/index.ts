@@ -1,8 +1,8 @@
 import CodeDocument from './helpers/CodeDocument';
-import { Position, Supplier } from './types';
-import type { Parser } from './types';
+import type { Position, Supplier } from './types/index';
+import type { Parser } from './types/index';
 
-export { Position, Supplier };
+export type { Position, Supplier };
 export type { Parser };
 
 export { CodeDocument };

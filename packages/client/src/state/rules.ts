@@ -9,12 +9,12 @@ const {
     getEntities: rulesState,
     getEntity: ruleState,
     entityIds: ruleIds,
-} = factory({
+} = factory<Rule>({
     state: 'rules',
-    default: <Rule>{
+    default: {
         id: '',
         name: '',
-        scope: <string[]>[],
+        scope: [],
         settings: {
             foreground: '#000000',
             fontStyle: [],
