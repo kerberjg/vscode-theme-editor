@@ -1,6 +1,6 @@
 import React from 'react';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 interface Props {
     lineNumber: number;
