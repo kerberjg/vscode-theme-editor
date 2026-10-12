@@ -5,7 +5,7 @@ import { debounce } from 'lodash';
 
 import getContrastColor from '../../../../helpers/getContrastColor';
 
-import css from './styles.module.scss';
+import * as css from './styles.module.scss';
 
 interface Props {
     onChange: (color: string) => void;
