@@ -9,10 +9,10 @@
     "main": "src/index.ts",
     "module": "src/index.ts",
     "dependencies": {
-        "typescript-vscode-sh-plugin": "^0.7.3"
+        "typescript-vscode-sh-plugin": "^0.7.3",
+        "typescript": "6.*"
     },
     "devDependencies": {
-        "rimraf": "^3.0.2",
-        "typescript": "6.*"
+        "rimraf": "^3.0.2"
     }
 }

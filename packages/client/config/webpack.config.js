@@ -51,7 +51,9 @@ module.exports = function (webpackEnv) {
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
   // Get environment variables to inject into our app.
-  const env = getClientEnvironment(process.env.PUBLIC_URL);
+  const publicUrl = process.env.PUBLIC_URL || 'http://localhost:3000';
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+  const env = getClientEnvironment(publicUrl, backendUrl);
 
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',

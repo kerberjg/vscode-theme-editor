@@ -1,5 +1,5 @@
 import express from 'express';
-import { parser } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
+import { parseSemanticTokens } from '@kerberjg-vscode-editor/semantic-tokens-utilities';
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.post('/sh', (req, res) => {
     const body = req.body;
     const code = body.code || '';
 
-    const result = parser({ code, language: 'tsx' });
+    const result = parseSemanticTokens({ code, language: 'tsx' });
 
     res.send(result);
 });
