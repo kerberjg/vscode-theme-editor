@@ -17,6 +17,10 @@
     position: relative;
     font-family: var(--font-code);
 
+    &.exists {
+        cursor: alias;
+    }
+
     &:hover {
         cursor: pointer;
 
