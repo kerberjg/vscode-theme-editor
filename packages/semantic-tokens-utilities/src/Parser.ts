@@ -40,7 +40,7 @@ const _getTokenTypeIndex = (classification: number): number | undefined => {
 const _getTokenModifierSet = (classification: number): number =>
     classification & TokenEncodingConsts.modifierMask;
 
-const parser: Parser<SemanticToken> = ({ code, language }: Input) => {
+const parseSemanticTokens: Parser<SemanticToken> = ({ code, language }: Input) => {
     const codeDocument = new CodeDocument({ code });
 
     const { service, host } = _createTypeScript({ code, language });
@@ -81,8 +81,8 @@ const parser: Parser<SemanticToken> = ({ code, language }: Input) => {
         tokens,
     };
 };
+export default parseSemanticTokens;
 
 type SemanticTokensParserResult = ReturnType<Parser<SemanticToken>>;
-export { SemanticTokensParserResult };
+export type { SemanticTokensParserResult };
 
-export default parser;
