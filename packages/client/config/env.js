@@ -94,6 +94,7 @@ function getClientEnvironment(publicUrl) {
       env[key] = JSON.stringify(raw[key]);
       return env;
     }, {}),
+    'process.platform': JSON.stringify('web')
   };
 
   return { raw, stringified };
